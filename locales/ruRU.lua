@@ -13,7 +13,7 @@ local L = app.locales
 L.REQUIRES_RELOAD =						"|cffFF0000" .. REQUIRES_RELOAD .. ".|r Используйте |cffFFFFFF/reload|r или перезайдите."	-- "Requires Reload"
 
 -- Slash commands
--- L.INVALID_COMMAND =						"Invalid command."
+L.INVALID_COMMAND =						"Неверная команда."
 
 -- Version comms
 L.NEW_VERSION_AVAILABLE =				"Доступна более новая версия " .. app.NameLong .. " аддона:"
@@ -24,7 +24,7 @@ L.INSTANT_BUTTON =						"Получить сейчас!"
 L.INSTANT_TOOLTIP =						"Удерживайте Shift, чтобы мгновенно получить предмет, пропуская 5-секундный таймер."
 
 -- Settings
--- L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
+L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
 L.SETTINGS_SUPPORT_TEXTLONG =			"Разработка этого аддона требует значительного времени и усилий.\nПожалуйста, рассмотрите возможность финансовой поддержки разработчика."
 L.SETTINGS_SUPPORT_TEXT =				"Поддержать"
 L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee" -- Brand name, if there isn't a localised version, keep it the way it is
@@ -41,11 +41,11 @@ L.SETTINGS_URL_COPIED =					"Ссылка скопирована в буфер �
 L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " & Слэш-команды"	-- "Keybindings"
 L.SETTINGS_SLASH_SETTINGS =				"Откройте настройки"
 
--- L.GENERAL =								GENERAL	-- "General"
--- L.SETTINGS_CURSORGUIDE_TITLE =			"Cursor Guide"
--- L.SETTINGS_CURSORGUIDE_TOOLTIP =		"Show a guide around the cursor to help you keep track of it."
--- L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =	"Only In Combat"
--- L.SETTINGS_CURSORGUIDE_COMBAT_TOOLTIP =	"Only show the cursor guide in combat."
+L.GENERAL =								GENERAL	-- "General"
+L.SETTINGS_CURSORGUIDE_TITLE =			"Направляющая курсора"
+L.SETTINGS_CURSORGUIDE_TOOLTIP =		"Чтобы вам было легче следить за курсором, отобразите вокруг него направляющую."
+L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =	"Только в бою"
+L.SETTINGS_CURSORGUIDE_COMBAT_TOOLTIP =	"Отображайте курсор только в бою."
 L.SETTINGS_COMPARE_TITLE =				"Отключить постоянное сравнение"
 L.SETTINGS_COMPARE_TOOLTIP =			"Отключить поведение постоянного сравнения предметов, добавленное в патче 11.2.7."
 L.SETTINGS_SPLITBAG_TITLE =				"Разделение количества мешков с реагентами"
