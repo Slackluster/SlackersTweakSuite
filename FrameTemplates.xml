@@ -21,4 +21,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+
+	<Frame name="SlackersTweakSuite_SettingsExpandTemplate" inherits="SettingsExpandableSectionTemplate" mixin="SlackersTweakSuite_SettingsExpandMixin" virtual="true">
+		<Size y="24" />
+	</Frame>
 </Ui>

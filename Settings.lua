@@ -106,27 +106,27 @@ function app:CreateSettings()
 	end
 	layout:AddInitializer(CreateSettingsButtonInitializer(L.SETTINGS_ISSUES_TEXT, L.SETTINGS_ISSUES_BUTTON, onIssuesButtonClick, L.SETTINGS_ISSUES_DESC, true))
 
-	ProfessionShoppingList_SettingsExpandMixin = CreateFromMixins(SettingsExpandableSectionMixin)
+	SlackersTweakSuite_SettingsExpandMixin = CreateFromMixins(SettingsExpandableSectionMixin)
 
-	function ProfessionShoppingList_SettingsExpandMixin:Init(initializer)
+	function SlackersTweakSuite_SettingsExpandMixin:Init(initializer)
 		SettingsExpandableSectionMixin.Init(self, initializer)
 		self.data = initializer.data
 	end
 
-	function ProfessionShoppingList_SettingsExpandMixin:OnExpandedChanged(expanded)
+	function SlackersTweakSuite_SettingsExpandMixin:OnExpandedChanged(expanded)
 		SettingsInbound.RepairDisplay()
 	end
 
-	function ProfessionShoppingList_SettingsExpandMixin:CalculateHeight()
+	function SlackersTweakSuite_SettingsExpandMixin:CalculateHeight()
 		return 24
 	end
 
-	function ProfessionShoppingList_SettingsExpandMixin:OnExpandedChanged(expanded)
+	function SlackersTweakSuite_SettingsExpandMixin:OnExpandedChanged(expanded)
 		self:EvaluateVisibility(expanded)
         SettingsInbound.RepairDisplay()
 	end
 
-	function ProfessionShoppingList_SettingsExpandMixin:EvaluateVisibility(expanded)
+	function SlackersTweakSuite_SettingsExpandMixin:EvaluateVisibility(expanded)
 		if expanded then
 			self.Button.Right:SetAtlas("Options_ListExpand_Right_Expanded", TextureKitConstants.UseAtlasSize)
 		else
@@ -138,7 +138,7 @@ function app:CreateSettings()
 		local initializer = CreateFromMixins(SettingsExpandableSectionInitializer)
 		local data = { name = name, expanded = false }
 
-		initializer:Init("ProfessionShoppingList_SettingsExpandTemplate", data)
+		initializer:Init("SlackersTweakSuite_SettingsExpandTemplate", data)
 		initializer.GetExtent = ScrollBoxFactoryInitializerMixin.GetExtent
 
 		layout:AddInitializer(initializer)
@@ -148,14 +148,14 @@ function app:CreateSettings()
 		end
 	end
 
-	local expandInitializer, isExpanded = createExpandableSection(layout, L.SETTINGS_KEYSLASH_TITLE)
+	local expandInitializer, isExpanded = createExpandableSection(layout, "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_KEYSLASH_TITLE)
 
 		local data = { leftText = "|cffFFFFFF"
 			.. "/sts settings",
 		middleText =
 			L.SETTINGS_SLASH_SETTINGS
 		}
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("ProfessionShoppingList_SettingsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("SlackersTweakSuite_SettingsText", data))
 		function text:GetExtent()
 			return 28 + select(2, string.gsub(data.leftText, "\n", "")) * 12
 		end
@@ -163,7 +163,7 @@ function app:CreateSettings()
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.GENERAL))
 
-	local variable, name, tooltip = "cursorGuide", L.SETTINGS_CURSORGUIDE_TITLE, L.SETTINGS_CURSORGUIDE_TOOLTIP
+	local variable, name, tooltip = "cursorGuide", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_CURSORGUIDE_TITLE, L.SETTINGS_CURSORGUIDE_TOOLTIP
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	setting:SetValueChangedCallback(function()
@@ -199,7 +199,7 @@ function app:CreateSettings()
 		end
 	end)
 
-	local variable, name, tooltip = "instantCatalyst", L.SETTINGS_CATALYST, L.SETTINGS_CATALYST_DESC
+	local variable, name, tooltip = "instantCatalyst", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_CATALYST, L.SETTINGS_CATALYST_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 
@@ -208,7 +208,7 @@ function app:CreateSettings()
 	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["instantCatalyst"] end)
 
-	local variable, name, tooltip = "instantVault", L.SETTINGS_VAULT, L.SETTINGS_VAULT_DESC
+	local variable, name, tooltip = "instantVault", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_VAULT, L.SETTINGS_VAULT_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 
@@ -217,11 +217,11 @@ function app:CreateSettings()
 	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["instantVault"] end)
 
-	local variable, name, tooltip = "vendorAll", L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC
+	local variable, name, tooltip = "vendorAll", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 
-	local variable, name, tooltip = "hideGroupRolls", L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC
+	local variable, name, tooltip = "hideGroupRolls", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName.."_"..variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 
