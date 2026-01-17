@@ -131,7 +131,7 @@ function app:CreateSettings()
 
 	function SlackersTweakSuite_SettingsExpandMixin:OnExpandedChanged(expanded)
 		self:EvaluateVisibility(expanded)
-        SettingsInbound.RepairDisplay()
+		SettingsInbound.RepairDisplay()
 	end
 
 	function SlackersTweakSuite_SettingsExpandMixin:EvaluateVisibility(expanded)
