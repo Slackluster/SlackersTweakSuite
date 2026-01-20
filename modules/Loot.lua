@@ -7,6 +7,8 @@ local appName, app = ...
 local api = app.api
 local L = app.locales
 
+TransmogLootHelper_Settings = TransmogLootHelper_Settings or {}
+
 ----------------------
 -- INSTANT CATALYST --
 ----------------------
