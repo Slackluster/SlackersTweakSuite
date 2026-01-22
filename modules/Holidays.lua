@@ -26,6 +26,7 @@ app.Event:Register("PLAYER_SOFT_INTERACT_CHANGED", function(oldTarget, newTarget
 			"糖果桶",
 		}
 		if newTarget then
+			if issecretvalue(UnitName("softinteract")) then return end
 			for _, name in pairs(candyBucket) do
 				if UnitName("softinteract") == name then
 					app.SoftTarget = "Candy Bucket"
