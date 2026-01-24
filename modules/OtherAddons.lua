@@ -183,6 +183,7 @@ function app:HideOribosMessage()
 					local removed = 0
 
 					ChatFrame1:RemoveMessagesByPredicate(function(m)
+						if issecretvalue(m) then return end
 						-- We're probably too fast, so mark removed as +1
 						if m:find(message) ~= nil then removed = removed + 1 end
 						return m:find(message) ~= nil
