@@ -16,6 +16,7 @@ app.Event:Register("UNIT_POWER_UPDATE", function(unitTarget, powerType)
 		local function hasBuff(spellID)
 			for i = 1, 40 do
 				local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+				if aura and issecretvalue(aura.spellID) then return false end
 				if aura and aura.spellId == spellID then
 					return true
 				end
