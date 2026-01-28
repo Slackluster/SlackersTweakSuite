@@ -156,7 +156,7 @@ function app:CreateSettings()
 		end
 	end
 
-	local expandInitializer, isExpanded = createExpandableSection(layout, "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_KEYSLASH_TITLE)
+	local expandInitializer, isExpanded = createExpandableSection(layout, app.IconNew .. L.SETTINGS_KEYSLASH_TITLE)
 
 		local data = { leftText = "|cffFFFFFF"
 			.. "/sts settings",
@@ -171,7 +171,7 @@ function app:CreateSettings()
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.GENERAL))
 
-	local variable, name, tooltip = "cursorGuide", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_CURSORGUIDE_TITLE, L.SETTINGS_CURSORGUIDE_TOOLTIP
+	local variable, name, tooltip = "cursorGuide", app.IconNew .. L.SETTINGS_CURSORGUIDE_TITLE, L.SETTINGS_CURSORGUIDE_TOOLTIP
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	setting:SetValueChangedCallback(function()
@@ -207,7 +207,7 @@ function app:CreateSettings()
 		end
 	end)
 
-	local variable, name, tooltip = "instantCatalyst", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_CATALYST, L.SETTINGS_CATALYST_DESC
+	local variable, name, tooltip = "instantCatalyst", app.IconNew .. L.SETTINGS_CATALYST, L.SETTINGS_CATALYST_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 
@@ -216,7 +216,7 @@ function app:CreateSettings()
 	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["instantCatalyst"] end)
 
-	local variable, name, tooltip = "instantVault", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_VAULT, L.SETTINGS_VAULT_DESC
+	local variable, name, tooltip = "instantVault", app.IconNew .. L.SETTINGS_VAULT, L.SETTINGS_VAULT_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 
@@ -225,11 +225,11 @@ function app:CreateSettings()
 	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["instantVault"] end)
 
-	local variable, name, tooltip = "vendorAll", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC
+	local variable, name, tooltip = "vendorAll", app.IconNew .. L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 
-	local variable, name, tooltip = "hideGroupRolls", "|A:UI-Journeys-GreatVault-Tag-new:33:49|a" .. L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC
+	local variable, name, tooltip = "hideGroupRolls", app.IconNew .. L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName.."_"..variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 

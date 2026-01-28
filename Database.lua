@@ -17,3 +17,4 @@ app.IconRMB = "|TInterface\\TutorialFrame\\UI-Tutorial-Frame:12:12:0:0:512:512:1
 app.IconWaiting = "|TInterface\\RaidFrame\\ReadyCheck-Waiting:0|t"
 app.IconReady = "|TInterface\\RaidFrame\\ReadyCheck-Ready:0|t"
 app.IconNotReady = "|TInterface\\RaidFrame\\ReadyCheck-NotReady:0|t"
+app.IconNew = "|TInterface\\AddOns\\SlackersTweakSuite\\assets\\new.png:20:28|t"
