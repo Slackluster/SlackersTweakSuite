@@ -40,7 +40,7 @@ function app:CreateCursorGuide()
 		local tex = frame:CreateTexture(nil, "OVERLAY")
 		tex:SetAllPoints()
 		tex:SetTexture("Interface\\AddOns\\SlackersTweakSuite\\assets\\CursorGradient.tga")
-		tex:SetAlpha(0.6)
+		tex:SetAlpha(1)
 		if rotation then tex:SetRotation(rotation.angle, rotation.pivot) end
 
 		frame:SetScript("OnUpdate", FollowCursor)
