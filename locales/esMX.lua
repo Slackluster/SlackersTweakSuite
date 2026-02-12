@@ -2,7 +2,7 @@
 -- Slacker's Tweak Suite: esMX.lua --
 -------------------------------------
 -- Spanish (Mexico) localisation
--- Translator(s):
+-- Translator(s): Ferran Carril
 
 -- Initialisation
 if GetLocale() ~= "esMX" then return end
@@ -13,10 +13,10 @@ local L = app.locales
 -- L.REQUIRES_RELOAD =						"|cffFF0000" .. REQUIRES_RELOAD .. ".|r Use |cffFFFFFF/reload|r or relog."	-- "Requires Reload"
 
 -- Slash commands
--- L.INVALID_COMMAND =						"Invalid command."
+L.INVALID_COMMAND =						"Comando no válido."
 
 -- Version comms
--- L.NEW_VERSION_AVAILABLE =				"There is a newer version of " .. app.NameLong .. " available:"
+L.NEW_VERSION_AVAILABLE =				"Hay una versión más nueva de " .. app.NameLong .. " disponible:"
 
 -- UI
 -- L.REGION =								"Region"	-- Preceded by an abbreviated region name such as "EU" or "US"
@@ -24,21 +24,21 @@ local L = app.locales
 -- L.INSTANT_TOOLTIP =						"Hold Shift to instantly receive your item and skip the 5 second timer."
 
 -- Settings
--- L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
--- L.SETTINGS_SUPPORT_TEXTLONG =			"Developing this addon takes a significant amount of time and effort.\nPlease consider financially supporting the developer."
--- L.SETTINGS_SUPPORT_TEXT =				"Support"
--- L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee"	-- Brand name, if there isn't a localised version, keep it the way it is
--- L.SETTINGS_SUPPORT_DESC =				"Thank you!"
--- L.SETTINGS_HELP_TEXT =					"Feedback & Help"
--- L.SETTINGS_HELP_BUTTON =				"Discord"	-- Brand name, if there isn't a localised version, keep it the way it is
--- L.SETTINGS_HELP_DESC =					"Join the Discord server."
--- L.SETTINGS_URL_COPY =					"Ctrl+C to copy:"
--- L.SETTINGS_URL_COPIED =					"Link copied to clipboard"
+L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
+L.SETTINGS_SUPPORT_TEXTLONG =			"Desarrollar este addon requiere una cantidad significativa de tiempo y esfuerzo.\nPor favor, considera apoyar financieramente al desarrollador."
+L.SETTINGS_SUPPORT_TEXT =				"Apoyar"
+L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee"	-- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_SUPPORT_DESC =				"¡Gracias!"
+L.SETTINGS_HELP_TEXT =					"Comentarios y Ayuda"
+L.SETTINGS_HELP_BUTTON =				"Discord"	-- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_HELP_DESC =					"Únete al servidor de Discord."
+L.SETTINGS_URL_COPY =					"Ctrl+C para copiar:"
+L.SETTINGS_URL_COPIED =					"Enlace copiado al portapapeles"
 
--- L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " & Slash Commands"	-- "Keybindings"
--- L.SETTINGS_SLASH_SETTINGS =				"Open the settings"
+L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " y Comandos"	-- "Keybindings"
+L.SETTINGS_SLASH_SETTINGS =				"Abrir opciones"
 
--- L.GENERAL =								GENERAL	-- "General"
+L.GENERAL =								GENERAL	-- "General"
 -- L.SETTINGS_CURSORGUIDE_TITLE =			"Cursor Guide"
 -- L.SETTINGS_CURSORGUIDE_TOOLTIP =		"Show a guide around the cursor to help you keep track of it."
 -- L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =	"Only In Combat"
