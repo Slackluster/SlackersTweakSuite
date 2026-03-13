@@ -22,11 +22,22 @@ end)
 -----------------
 
 function app:ShowTokenPrice()
-	local function OnTooltipSetItem(tooltip, data)
-		local _, _, itemID = TooltipUtil.GetDisplayedItem(tooltip)
-
+	local function OnTooltipSetItem(tooltip, itemData)
 		if SlackersTweakSuite_Settings["showTokenPrice"] then
-			if itemID and itemID == 122270 and C_WowTokenPublic.GetCurrentMarketPrice() then
+
+			local _, itemLink, itemID
+			if itemData and itemData.id then
+				itemID = itemData.id
+				itemLink = C_Item.GetItemInfo(itemID)
+			elseif tooltip.GetItem then
+				_, itemLink, itemID = tooltip:GetItem()
+			else
+				_, itemLink, itemID = TooltipUtil.GetDisplayedItem(GameTooltip)
+			end
+
+			if not itemLink and itemID then return end
+
+			if itemID == 122270 and C_WowTokenPublic.GetCurrentMarketPrice() then
 				tooltip:AddLine(" ")
 				tooltip:AddDoubleLine(TOKEN_CURRENT_MARKET_PRICE, GetMoneyString(C_WowTokenPublic.GetCurrentMarketPrice()))
 			end
