@@ -42,16 +42,22 @@ end
 function app:FixUnderminePrices()
 	local function OnTooltipSetItem(tooltip, itemData)
 		if SlackersTweakSuite_Settings["underminePrices"] then
-			local _, itemLink, itemID
-			if itemData and itemData.id then
-				itemID = itemData.id
-				itemLink = C_Item.GetItemInfo(itemID)
-			elseif tooltip.GetItem then
-				_, itemLink, itemID = tooltip:GetItem()
-			else
-				_, itemLink, itemID = TooltipUtil.GetDisplayedItem(GameTooltip)
+			local itemLink, itemID, secondaryItemLink, secondaryItemID
+			local _, primaryItemLink, primaryItemID = TooltipUtil.GetDisplayedItem(GameTooltip)
+			if tooltip.GetItem then _, secondaryItemLink, secondaryItemID = tooltip:GetItem() end
+
+			-- Get our most accurate itemLink and itemID
+			itemID = primaryItemID or secondaryItemID
+			if itemID then
+				local _, _, _, _, _, _, _, _, _, _, _, classID, subclassID = C_Item.GetItemInfo(itemID)
+				if classID == 9 and subclassID ~= 0 then
+					_, itemLink = C_Item.GetItemInfo(itemID)
+				else
+					itemLink = primaryItemLink or secondaryItemLink
+				end
 			end
 
+			-- Return if no link or BoP item
 			if not itemLink or select(14, C_Item.GetItemInfo(itemLink)) == 1 then return end
 
 			if C_AddOns.IsAddOnLoaded("OribosExchange") then
