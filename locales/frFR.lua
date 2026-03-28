@@ -10,70 +10,70 @@ local appName, app = ...
 local L = app.locales
 
 -- General
-L.REQUIRES_RELOAD =						"|cffFF0000" .. REQUIRES_RELOAD .. ".|r Faites |cffFFFFFF/reload|r ou |cffFFFFFF/rl|r ou reconnectez-vous."
+-- L.REQUIRES_RELOAD =                      "|cffFF0000" .. REQUIRES_RELOAD .. ".|r Use |cffFFFFFF/reload|r or relog." -- "Requires Reload"
 
 -- Slash commands
-L.INVALID_COMMAND =						"Commande non valide."
+-- L.INVALID_COMMAND =                      "Invalid command."
 
 -- Version comms
-L.NEW_VERSION_AVAILABLE =				"Une nouvelle version de " .. app.NameLong .. " est disponible :"
+-- L.NEW_VERSION_AVAILABLE =                "There is a newer version of " .. app.NameLong .. " available:"
 
 -- UI
--- L.REGION =								"Region"	-- Preceded by an abbreviated region name such as "EU" or "US"
--- L.INSTANT_BUTTON =						"Get it now!"
--- L.INSTANT_TOOLTIP =						"Hold Shift to instantly receive your item and skip the 5 second timer."
+-- L.REGION =                               "Region" -- Preceded by an abbreviated region name such as "EU" or "US"
+-- L.INSTANT_BUTTON =                       "Get it now!"
+-- L.INSTANT_TOOLTIP =                      "Hold Shift to instantly receive your item and skip the 5 second timer."
 
 -- Settings
--- L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
-L.SETTINGS_SUPPORT_TEXTLONG =			"Le développement de cette extension demande beaucoup de temps et d’efforts.\nVeuillez envisager de soutenir financièrement le développeur."
-L.SETTINGS_SUPPORT_TEXT =				"Soutien"
-L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee"	-- Brand name, if there isn't a localised version, keep it the way it is
-L.SETTINGS_SUPPORT_DESC =				"Merci !"
-L.SETTINGS_HELP_TEXT =					"Commentaires et aide"
-L.SETTINGS_HELP_BUTTON =				"Discord"	-- Brand name, if there isn't a localised version, keep it the way it is
-L.SETTINGS_HELP_DESC =					"Rejoignez le serveur Discord."
-L.SETTINGS_URL_COPY =					"Ctrl + C pour copier :"
-L.SETTINGS_URL_COPIED =					"Lien copié dans le presse-papiers"
+L.SETTINGS_VERSION =                     GAME_VERSION_LABEL .. ":"    -- "Version"
+L.SETTINGS_SUPPORT_TEXTLONG =            "Le développement de cette extension demande beaucoup de temps et d’efforts.\nVeuillez envisager de soutenir financièrement le développeur."
+L.SETTINGS_SUPPORT_TEXT =                "Soutien"
+L.SETTINGS_SUPPORT_BUTTON =              "Buy Me a Coffee"    -- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_SUPPORT_DESC =                "Merci !"
+L.SETTINGS_HELP_TEXT =                   "Commentaires et aide"
+L.SETTINGS_HELP_BUTTON =                 "Discord"    -- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_HELP_DESC =                   "Rejoignez le serveur Discord."
+L.SETTINGS_URL_COPY =                    "Ctrl + C pour copier :"
+L.SETTINGS_URL_COPIED =                  "Lien copié dans le presse-papiers"
 
-L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " & Commandes « Slash »"	-- "Keybindings"
-L.SETTINGS_SLASH_SETTINGS =				"Ouvrir les paramètres"
+-- L.SETTINGS_KEYSLASH_TITLE =              SETTINGS_KEYBINDINGS_LABEL .. " & Slash Commands" -- "Keybindings"
+-- L.SETTINGS_SLASH_SETTINGS =              "Open the settings"
 
--- L.GENERAL =								GENERAL	-- "General"
--- L.SETTINGS_CURSORGUIDE_TITLE =			"Cursor Guide"
--- L.SETTINGS_CURSORGUIDE_TOOLTIP =		"Show a guide around the cursor to help you keep track of it."
--- L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =	"Only In Combat"
--- L.SETTINGS_CURSORGUIDE_COMBAT_TOOLTIP =	"Only show the cursor guide in combat."
--- L.SETTINGS_COMPARE_TITLE =				"Disable Always Compare"
--- L.SETTINGS_COMPARE_TOOLTIP =			"Disable the always compare items behavior added in 11.2.7."
-L.SETTINGS_SPLITBAG_TITLE =				"Nombre de composants dans les sacs"
-L.SETTINGS_SPLITBAG_TOOLTIP =			"Affiche les emplacements libres de vos sacs et sac de composants séparément au-dessus de l’icône du sac à dos."
-L.SETTINGS_QUEUESOUND_TITLE =			"Jouer un son pour la file d’attente"
--- L.SETTINGS_QUEUESOUND_TOOLTIP =			"Play the queue sound on the Master channel when any queue pops, including battlegrounds and pet battles."
--- L.SETTINGS_CATALYST =					"Instant Catalyst"
--- L.SETTINGS_CATALYST_DESC =				"Hold Shift to instantly catalyze an item, skipping the 5 second timer."
--- L.SETTINGS_VAULT =						"Instant Great Vault"
--- L.SETTINGS_VAULT_DESC =					"Hold Shift to instantly receive your reward from the Great Vault and skip the 5 second timer."
--- L.SETTINGS_INSTANT_TOOLTIP =			"Show tooltip"
--- L.SETTINGS_INSTANT_TOOLTIP_DESC =		"Show the tooltip explaining how this feature works. The button text still changes when this is disabled."
--- L.SETTINGS_VENDOR_ALL =					"Disable Vendor Filter"
--- L.SETTINGS_VENDOR_ALL_DESC =			"Automatically set all vendor filters to |cffFFFFFFAll|r to display items normally not shown to your class."
--- L.SETTINGS_HIDE_LOOT_ROLL_WINDOW =		"Hide loot roll window"
--- L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =	"Hide the window that shows loot rolls and their results. You can show the window again with |cff00ccff/loot|r."
-L.SETTINGS_SHOWTOKENPRICE_TITLE =		"Afficher le prix du jeton WoW"
-L.SETTINGS_SHOWTOKENPRICE_TOOLTIP =		"Afficher le prix actuel du jeton WoW dans l'infobulle de l'objet « Jeton WoW »."
-L.SETTINGS_TOKYODRIFT_TITLE = 			"Tokyo Drift"
-L.SETTINGS_TOKYODRIFT_TOOLTIP = 		"Vroom vroom."
+-- L.GENERAL =                              GENERAL -- "General"
+-- L.SETTINGS_CURSORGUIDE_TITLE =           "Cursor Guide"
+-- L.SETTINGS_CURSORGUIDE_DESC =            "Show a guide around the cursor to help you keep track of it."
+-- L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =    "Only In Combat"
+-- L.SETTINGS_CURSORGUIDE_COMBAT_DESC =     "Only show the cursor guide in combat."
+-- L.SETTINGS_COMPARE_TITLE =               "Disable Always Compare"
+-- L.SETTINGS_COMPARE_DESC =                "Disable the always compare items behavior added in 11.2.7."
+-- L.SETTINGS_SPLITBAG_TITLE =              "Split Reagent Bag Count"
+-- L.SETTINGS_SPLITBAG_DESC =               "Shows the free slots of your regular bags and your reagent bag separately on top of the backpack icon."
+-- L.SETTINGS_CATALYST =                    "Instant Catalyst"
+-- L.SETTINGS_CATALYST_DESC =               "Hold Shift to instantly catalyze an item, skipping the 5 second timer."
+-- L.SETTINGS_VAULT =                       "Instant Great Vault"
+-- L.SETTINGS_VAULT_DESC =                  "Hold Shift to instantly receive your reward from the Great Vault and skip the 5 second timer."
+-- L.SETTINGS_INSTANT_TOOLTIP =             "Show tooltip"
+-- L.SETTINGS_INSTANT_TOOLTIP_DESC =        "Show the tooltip explaining how this feature works. The button text still changes when this is disabled."
+-- L.SETTINGS_VENDOR_ALL =                  "Disable Vendor Filter"
+-- L.SETTINGS_VENDOR_ALL_DESC =             "Automatically set all vendor filters to |cffFFFFFFAll|r to display items normally not shown to your class."
+-- L.SETTINGS_HIDE_LOOT_ROLL_WINDOW =       "Hide loot roll window"
+-- L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Hide the window that shows loot rolls and their results. You can show the window again with |cff00ccff/loot|r."
+-- L.SETTINGS_QUEUESOUND_TITLE =            "Play Queue Sound"
+-- L.SETTINGS_QUEUESOUND_DESC =             "Play the queue sound on the Master channel when any queue pops, including battlegrounds and pet battles."
+-- L.SETTINGS_SHOWTOKENPRICE_TITLE =        "Show WoW Token Price"
+-- L.SETTINGS_SHOWTOKENPRICE_DESC =         "Show the current WoW Token price on the WoW Token item tooltip."
+-- L.SETTINGS_TOKYODRIFT_TITLE =            "Tokyo Drift"
+-- L.SETTINGS_TOKYODRIFT_DESC =             "Vroom vroom."
 
--- L.ADDONS = 								ADDONS
-L.SETTINGS_HANDYNOTESFIX_TITLE =		"Désactiver HandyNotes Alt " .. app.IconRMB
-L.SETTINGS_HANDYNOTESFIX_TOOLTIP =		"Permettre à " .. app.NameShort .. " de désactiver le raccourci clavier d’HandyNotes sur la carte, en le réactivant pour les points de passages TomTom à la place.\n\n" .. L.REQUIRES_RELOAD
-L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE =	"Corriger l’info-bulle de l’échange d’Oribos"
-L.SETTINGS_ORIBOSEXCHANGEFIX_TOOLTIP =	app.NameShort .. " simplifie et corrige l’info-bulle fournie par l’addon Oribos Exchange :\n" ..
-										"- Arrondir à l’or le plus proche\n" ..
-										"- Corrige les prix des recettes\n" ..
-										"- Corrige les prix dans la fenêtre des professions\n" ..
-										"- Affiche les prix des mascottes de combat dans l’info-bulle existante"
+-- L.ADDONS =                               ADDONS -- "AddOns"
+-- L.SETTINGS_HANDYNOTESFIX_TITLE =         "Disable HandyNotes Alt " .. app.IconRMB
+-- L.SETTINGS_HANDYNOTESFIX_DESC =          "Let " .. app.NameShort .. " disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.\n\n" .. L.REQUIRES_RELOAD
+-- L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE =     "Fix Oribos Exchange Tooltip"
+-- L.SETTINGS_ORIBOSEXCHANGEFIX_DESC =      "Let " .. app.NameShort .. " simplify and fix the tooltip provided by the Oribos Exchange addon:\n" ..
+--                                          "- Round to the nearest gold.\n" ..
+--                                          "- Fix recipe prices.\n" ..
+--                                          "- Fix profession window prices.\n" ..
+--                                          "- Show battle pet prices inside the existing tooltip."
 
--- L.HOLIDAYS =							CALENDAR_FILTER_HOLIDAYS
--- L.SETTINGS_HALLOWSIT_TITLE =			"[Hallow's End] No Trick"
--- L.SETTINGS_HALLOWSIT_TOOLTIP =			"Sit down before completing a Candy Bucket quest, preventing getting tricked and pacified."
+-- L.HOLIDAYS =                             CALENDAR_FILTER_HOLIDAYS -- "Holidays"
+-- L.SETTINGS_HALLOWSIT_TITLE =             "[Hallow's End] No Trick"
+-- L.SETTINGS_HALLOWSIT_DESC =              "Sit down before completing a Candy Bucket quest, preventing getting tricked and pacified."

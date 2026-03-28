@@ -10,70 +10,70 @@ local appName, app = ...
 local L = app.locales
 
 -- General
-L.REQUIRES_RELOAD =						"|cffFF0000" .. REQUIRES_RELOAD .. ".|r Используйте |cffFFFFFF/reload|r или перезайдите."	-- "Requires Reload"
+L.REQUIRES_RELOAD =                      "|cffFF0000" .. REQUIRES_RELOAD .. ".|r Используйте |cffFFFFFF/reload|r или перезайдите." -- "Requires Reload"
 
 -- Slash commands
-L.INVALID_COMMAND =						"Неверная команда."
+L.INVALID_COMMAND =                      "Неверная команда."
 
 -- Version comms
-L.NEW_VERSION_AVAILABLE =				"Доступна более новая версия " .. app.NameLong .. " аддона:"
+L.NEW_VERSION_AVAILABLE =                "Доступна более новая версия " .. app.NameLong .. " аддона:"
 
 -- UI
-L.REGION =								"Регион"	-- Preceded by an abbreviated region name such as "EU" or "US"
-L.INSTANT_BUTTON =						"Получить сейчас!"
-L.INSTANT_TOOLTIP =						"Удерживайте Shift, чтобы мгновенно получить предмет, пропуская 5-секундный таймер."
+L.REGION =                               "Регион" -- Preceded by an abbreviated region name such as "EU" or "US"
+L.INSTANT_BUTTON =                       "Получить сейчас!"
+L.INSTANT_TOOLTIP =                      "Удерживайте Shift, чтобы мгновенно получить предмет, пропуская 5-секундный таймер."
 
 -- Settings
-L.SETTINGS_VERSION =					GAME_VERSION_LABEL .. ":"	-- "Version"
-L.SETTINGS_SUPPORT_TEXTLONG =			"Разработка этого аддона требует значительного времени и усилий.\nПожалуйста, рассмотрите возможность финансовой поддержки разработчика."
-L.SETTINGS_SUPPORT_TEXT =				"Поддержать"
-L.SETTINGS_SUPPORT_BUTTON =				"Buy Me a Coffee" -- Brand name, if there isn't a localised version, keep it the way it is
-L.SETTINGS_SUPPORT_DESC =				"Спасибо!"
-L.SETTINGS_HELP_TEXT =					"Обратная связь и помощь"
-L.SETTINGS_HELP_BUTTON =				"Discord" -- Brand name, if there isn't a localised version, keep it the way it is
-L.SETTINGS_HELP_DESC =					"Присоединиться к серверу Discord."
-L.SETTINGS_URL_COPY =					"Ctrl+C — скопировать:"
-L.SETTINGS_URL_COPIED =					"Ссылка скопирована в буфер обмена"
+L.SETTINGS_VERSION =                     GAME_VERSION_LABEL .. ":" -- "Version"
+L.SETTINGS_SUPPORT_TEXTLONG =            "Разработка этого аддона требует значительного времени и усилий.\nПожалуйста, рассмотрите возможность финансовой поддержки разработчика."
+L.SETTINGS_SUPPORT_TEXT =                "Поддержать"
+L.SETTINGS_SUPPORT_BUTTON =              "Buy Me a Coffee" -- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_SUPPORT_DESC =                "Спасибо!"
+L.SETTINGS_HELP_TEXT =                   "Обратная связь и помощь"
+L.SETTINGS_HELP_BUTTON =                 "Discord" -- Brand name, if there isn't a localised version, keep it the way it is
+L.SETTINGS_HELP_DESC =                   "Присоединиться к серверу Discord."
+L.SETTINGS_URL_COPY =                    "Ctrl+C — скопировать:"
+L.SETTINGS_URL_COPIED =                  "Ссылка скопирована в буфер обмена"
 
-L.SETTINGS_KEYSLASH_TITLE =				SETTINGS_KEYBINDINGS_LABEL .. " & Слэш-команды"	-- "Keybindings"
-L.SETTINGS_SLASH_SETTINGS =				"Откройте настройки"
+L.SETTINGS_KEYSLASH_TITLE =              SETTINGS_KEYBINDINGS_LABEL .. " & Слэш-команды" -- "Keybindings"
+L.SETTINGS_SLASH_SETTINGS =              "Откройте настройки"
 
-L.GENERAL =								GENERAL	-- "General"
-L.SETTINGS_CURSORGUIDE_TITLE =			"Направляющая курсора"
-L.SETTINGS_CURSORGUIDE_TOOLTIP =		"Чтобы вам было легче следить за курсором, отобразите вокруг него направляющую."
-L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =	"Только в бою"
-L.SETTINGS_CURSORGUIDE_COMBAT_TOOLTIP =	"Отображайте курсор только в бою."
-L.SETTINGS_COMPARE_TITLE =				"Отключить постоянное сравнение"
-L.SETTINGS_COMPARE_TOOLTIP =			"Отключить поведение постоянного сравнения предметов, добавленное в патче 11.2.7."
-L.SETTINGS_SPLITBAG_TITLE =				"Разделение количества мешков с реагентами"
-L.SETTINGS_SPLITBAG_TOOLTIP =			"Показывает свободные слоты ваших обычных сумок и сумки с реагентами отдельно над значком рюкзака."
-L.SETTINGS_CATALYST =					"Мгновенная катализация"
-L.SETTINGS_CATALYST_DESC =				"Удерживайте Shift, чтобы мгновенно катализировать предмет, пропуская 5-секундный таймер."
-L.SETTINGS_VAULT =						"Мгновенное Великое Хранилище"
-L.SETTINGS_VAULT_DESC =					"Удерживайте Shift, чтобы мгновенно получить награду из Великого Хранилища, пропуская 5-секундный таймер."
-L.SETTINGS_INSTANT_TOOLTIP =			"Показывать подсказку"
-L.SETTINGS_INSTANT_TOOLTIP_DESC =		"Показывать подсказку, объясняющую, как работает эта функция. Текст кнопки все равно меняется, если это отключено."
-L.SETTINGS_VENDOR_ALL =					"Отключить фильтр торговца"
-L.SETTINGS_VENDOR_ALL_DESC =			"Автоматически устанавливать все фильтры торговца на |cffFFFFFFВсе|r, чтобы отображать предметы, обычно не показываемые для вашего класса."
-L.SETTINGS_HIDE_LOOT_ROLL_WINDOW =		"Скрыть окно бросков лута"
-L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =	"Скрыть окно, показывающее броски лута и их результаты. Вы можете снова показать окно с помощью |cff00ccff/loot|r."
-L.SETTINGS_QUEUESOUND_TITLE =			"Воспроизвести звук очереди"
-L.SETTINGS_QUEUESOUND_TOOLTIP =			"Воспроизводить звук готовности очереди на главном канале, когда срабатывает любая очередь, включая поля боя и битвы питомцев."
-L.SETTINGS_SHOWTOKENPRICE_TITLE =		"Показать цену жетона WoW"
-L.SETTINGS_SHOWTOKENPRICE_TOOLTIP =		"Отображать текущую цену жетона WoW в подсказке к предмету Жетон WoW."
-L.SETTINGS_TOKYODRIFT_TITLE = 			"Токийский Дрифт"
-L.SETTINGS_TOKYODRIFT_TOOLTIP = 		"Врум врум."
+L.GENERAL =                              GENERAL -- "General"
+L.SETTINGS_CURSORGUIDE_TITLE =           "Направляющая курсора"
+L.SETTINGS_CURSORGUIDE_DESC =            "Чтобы вам было легче следить за курсором, отобразите вокруг него направляющую."
+L.SETTINGS_CURSORGUIDE_COMBAT_TITLE =    "Только в бою"
+L.SETTINGS_CURSORGUIDE_COMBAT_DESC =     "Отображайте курсор только в бою."
+L.SETTINGS_COMPARE_TITLE =               "Отключить постоянное сравнение"
+L.SETTINGS_COMPARE_DESC =                "Отключить поведение постоянного сравнения предметов, добавленное в патче 11.2.7."
+L.SETTINGS_SPLITBAG_TITLE =              "Разделение количества мешков с реагентами"
+L.SETTINGS_SPLITBAG_DESC =               "Показывает свободные слоты ваших обычных сумок и сумки с реагентами отдельно над значком рюкзака."
+L.SETTINGS_CATALYST =                    "Мгновенная катализация"
+L.SETTINGS_CATALYST_DESC =               "Удерживайте Shift, чтобы мгновенно катализировать предмет, пропуская 5-секундный таймер."
+L.SETTINGS_VAULT =                       "Мгновенное Великое Хранилище"
+L.SETTINGS_VAULT_DESC =                  "Удерживайте Shift, чтобы мгновенно получить награду из Великого Хранилища, пропуская 5-секундный таймер."
+L.SETTINGS_INSTANT_TOOLTIP =             "Показывать подсказку"
+L.SETTINGS_INSTANT_TOOLTIP_DESC =        "Показывать подсказку, объясняющую, как работает эта функция. Текст кнопки все равно меняется, если это отключено."
+L.SETTINGS_VENDOR_ALL =                  "Отключить фильтр торговца"
+L.SETTINGS_VENDOR_ALL_DESC =             "Автоматически устанавливать все фильтры торговца на |cffFFFFFFВсе|r, чтобы отображать предметы, обычно не показываемые для вашего класса."
+L.SETTINGS_HIDE_LOOT_ROLL_WINDOW =       "Скрыть окно бросков лута"
+L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Скрыть окно, показывающее броски лута и их результаты. Вы можете снова показать окно с помощью |cff00ccff/loot|r."
+L.SETTINGS_QUEUESOUND_TITLE =            "Воспроизвести звук очереди"
+L.SETTINGS_QUEUESOUND_DESC =             "Воспроизводить звук готовности очереди на главном канале, когда срабатывает любая очередь, включая поля боя и битвы питомцев."
+L.SETTINGS_SHOWTOKENPRICE_TITLE =        "Показать цену жетона WoW"
+L.SETTINGS_SHOWTOKENPRICE_DESC =         "Отображать текущую цену жетона WoW в подсказке к предмету Жетон WoW."
+L.SETTINGS_TOKYODRIFT_TITLE =            "Токийский Дрифт"
+L.SETTINGS_TOKYODRIFT_DESC =             "Врум врум."
 
--- L.ADDONS = 								ADDONS
-L.SETTINGS_HANDYNOTESFIX_TITLE =		"Отключить HandyNotes Alt " .. app.IconRMB
-L.SETTINGS_HANDYNOTESFIX_TOOLTIP =		"Позвольте " .. app.NameShort .. " отключить привязку клавиш HandyNotes на карте, вместо этого включив ее для точек маршрута TomTom.\n\n" .. L.REQUIRES_RELOAD
-L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE =	"Исправлена подсказка Oribos Exchange"
-L.SETTINGS_ORIBOSEXCHANGEFIX_TOOLTIP =	"Позвольте " .. app.NameShort .. " упростить и исправить подсказку, предоставляемую аддоном Oribos Exchange:\n" ..
-										"- Округлить до золотого.\n" ..
-										"- Исправление цен на рецепты.\n" ..
-										"- Исправление цен на окне профессии.\n" ..
-										"- Показывать цены на питомцев внутри существующей подсказки."
+L.ADDONS =                               ADDONS -- "AddOns"
+L.SETTINGS_HANDYNOTESFIX_TITLE =         "Отключить HandyNotes Alt " .. app.IconRMB
+L.SETTINGS_HANDYNOTESFIX_DESC =          "Позвольте " .. app.NameShort .. " отключить привязку клавиш HandyNotes на карте, вместо этого включив ее для точек маршрута TomTom.\n\n" .. L.REQUIRES_RELOAD
+L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE =     "Исправлена подсказка Oribos Exchange"
+L.SETTINGS_ORIBOSEXCHANGEFIX_DESC =      "Позвольте " .. app.NameShort .. " упростить и исправить подсказку, предоставляемую аддоном Oribos Exchange:\n" ..
+                                         "- Округлить до золотого.\n" ..
+                                         "- Исправление цен на рецепты.\n" ..
+                                         "- Исправление цен на окне профессии.\n" ..
+                                         "- Показывать цены на питомцев внутри существующей подсказки."
 
-L.HOLIDAYS =							CALENDAR_FILTER_HOLIDAYS
-L.SETTINGS_HALLOWSIT_TITLE =			"[Тыквовин] Без уловок"
-L.SETTINGS_HALLOWSIT_TOOLTIP =			"Сядьте, прежде чем выполнять задание «Кулек конфет», чтобы не дать себя обмануть и успокоить."
+L.HOLIDAYS =                             CALENDAR_FILTER_HOLIDAYS -- "Holidays"
+L.SETTINGS_HALLOWSIT_TITLE =             "[Тыквовин] Без уловок"
+L.SETTINGS_HALLOWSIT_DESC =              "Сядьте, прежде чем выполнять задание «Кулек конфет», чтобы не дать себя обмануть и успокоить."

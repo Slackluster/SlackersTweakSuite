@@ -166,14 +166,14 @@ function app:CreateSettings()
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.GENERAL))
 
-	local variable, name, tooltip = "cursorGuide", L.SETTINGS_CURSORGUIDE_TITLE .. app.IconNew, L.SETTINGS_CURSORGUIDE_TOOLTIP
+	local variable, name, tooltip = "cursorGuide", L.SETTINGS_CURSORGUIDE_TITLE .. app.IconNew, L.SETTINGS_CURSORGUIDE_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	setting:SetValueChangedCallback(function()
 		app:SetCursorGuideVisibility()
 	end)
 
-	local variable, name, tooltip = "cursorGuideCombat", L.SETTINGS_CURSORGUIDE_COMBAT_TITLE, L.SETTINGS_CURSORGUIDE_COMBAT_TOOLTIP
+	local variable, name, tooltip = "cursorGuideCombat", L.SETTINGS_CURSORGUIDE_COMBAT_TITLE, L.SETTINGS_CURSORGUIDE_COMBAT_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
 	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["cursorGuide"] end)
@@ -181,14 +181,14 @@ function app:CreateSettings()
 		app:SetCursorGuideVisibility()
 	end)
 
-	local variable, name, tooltip = "disableAlwaysCompare", L.SETTINGS_COMPARE_TITLE, L.SETTINGS_COMPARE_TOOLTIP
+	local variable, name, tooltip = "disableAlwaysCompare", L.SETTINGS_COMPARE_TITLE, L.SETTINGS_COMPARE_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 	setting:SetValueChangedCallback(function()
 		app:ToggleAlwaysCompare()
 	end)
 
-	local variable, name, tooltip = "backpackCount", L.SETTINGS_SPLITBAG_TITLE, L.SETTINGS_SPLITBAG_TOOLTIP
+	local variable, name, tooltip = "backpackCount", L.SETTINGS_SPLITBAG_TITLE, L.SETTINGS_SPLITBAG_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 	setting:SetValueChangedCallback(function()
@@ -228,25 +228,25 @@ function app:CreateSettings()
 	local setting = Settings.RegisterAddOnSetting(category, appName.."_"..variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
 
-	local variable, name, tooltip = "queueSound", L.SETTINGS_QUEUESOUND_TITLE, L.SETTINGS_QUEUESOUND_TOOLTIP
+	local variable, name, tooltip = "queueSound", L.SETTINGS_QUEUESOUND_TITLE, L.SETTINGS_QUEUESOUND_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	Settings.CreateCheckbox(category, setting, tooltip)
 
-	local variable, name, tooltip = "showTokenPrice", L.SETTINGS_SHOWTOKENPRICE_TITLE, L.SETTINGS_SHOWTOKENPRICE_TOOLTIP
+	local variable, name, tooltip = "showTokenPrice", L.SETTINGS_SHOWTOKENPRICE_TITLE, L.SETTINGS_SHOWTOKENPRICE_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 
-	local variable, name, tooltip = "tokyoDrift", L.SETTINGS_TOKYODRIFT_TITLE, L.SETTINGS_TOKYODRIFT_TOOLTIP
+	local variable, name, tooltip = "tokyoDrift", L.SETTINGS_TOKYODRIFT_TITLE, L.SETTINGS_TOKYODRIFT_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
 	Settings.CreateCheckbox(category, setting, tooltip)
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.ADDONS))
 
-	local variable, name, tooltip = "handyNotes", L.SETTINGS_HANDYNOTESFIX_TITLE, L.SETTINGS_HANDYNOTESFIX_TOOLTIP
+	local variable, name, tooltip = "handyNotes", L.SETTINGS_HANDYNOTESFIX_TITLE, L.SETTINGS_HANDYNOTESFIX_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 
-	local variable, name, tooltip = "underminePrices", L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE, L.SETTINGS_ORIBOSEXCHANGEFIX_TOOLTIP
+	local variable, name, tooltip = "underminePrices", L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE, L.SETTINGS_ORIBOSEXCHANGEFIX_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 	setting:SetValueChangedCallback(function()
@@ -255,7 +255,7 @@ function app:CreateSettings()
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.HOLIDAYS))
 
-	local variable, name, tooltip = "candySit", L.SETTINGS_HALLOWSIT_TITLE, L.SETTINGS_HALLOWSIT_TOOLTIP
+	local variable, name, tooltip = "candySit", L.SETTINGS_HALLOWSIT_TITLE, L.SETTINGS_HALLOWSIT_DESC
 	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
 	Settings.CreateCheckbox(category, setting, tooltip)
 end
