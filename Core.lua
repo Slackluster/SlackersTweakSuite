@@ -3,7 +3,7 @@
 -------------------------------------
 
 -- Initialisation
-local appName, app = ...	-- Returns the addon name and a unique table
+local appName, app = ... -- Returns the addon name and a unique table
 app.locales = {}
 app.api = {}
 SlackersTweakSuite = app.api
