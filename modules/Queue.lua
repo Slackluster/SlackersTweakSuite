@@ -12,7 +12,7 @@ local L = app.locales
 -----------------
 
 function app:PlayQueueSound()
-	if SlackersTweakSuite_Settings["queueSound"] then
+	if app.Settings["queueSound"] then
 		PlaySoundFile(567478, "Master")
 	end
 end

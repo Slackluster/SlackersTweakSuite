@@ -36,7 +36,7 @@ local L = app.locales
 -- L.SETTINGS_URL_COPIED =                  "Link copied to clipboard"
 
 -- L.SETTINGS_KEYSLASH_TITLE =              SETTINGS_KEYBINDINGS_LABEL .. " & Slash Commands" -- "Keybindings"
--- L.SETTINGS_SLASH_SETTINGS =              "Open the settings"
+-- L.SLASH_OPEN_SETTINGS =                  "Open the settings"
 
 -- L.GENERAL =                              GENERAL -- "General"
 -- L.SETTINGS_CURSORGUIDE_TITLE =           "Cursor Guide"

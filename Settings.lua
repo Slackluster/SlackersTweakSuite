@@ -13,13 +13,13 @@ local L = app.locales
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		if not SlackersTweakSuite_Settings then SlackersTweakSuite_Settings = {} end
+		SlackersTweakSuite_Settings = SlackersTweakSuite_Settings or {}
+		app.Settings = SlackersTweakSuite_Settings
+
+		app:CreateSettings()
 
 		-- Midnight cleanup
-		if TagsTrivialTweaks_Settings ~= nil then TagsTrivialTweaks_Settings = nil end
-
-		app:CreateLinkCopiedFrame()
-		app:CreateSettings()
+		TagsTrivialTweaks_Settings = nil
 	end
 end)
 
@@ -28,34 +28,35 @@ end)
 --------------
 
 function app:OpenSettings()
-	Settings.OpenToCategory(app.Settings:GetID())
+	Settings.OpenToCategory(app.SettingsCategory:GetID())
 end
 
--- Settings
 function app:CreateSettings()
-	local category, layout = Settings.RegisterVerticalLayoutCategory(app.Name)
-	Settings.RegisterAddOnCategory(category)
-	app.Settings = category
+	-- Helper functions
+	app.LinkCopiedFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+	app.LinkCopiedFrame:SetPoint("CENTER")
+	app.LinkCopiedFrame:SetFrameStrata("TOOLTIP")
+	app.LinkCopiedFrame:SetHeight(1)
+	app.LinkCopiedFrame:SetWidth(1)
+	app.LinkCopiedFrame:Hide()
 
-	SlackersTweakSuite_SettingsTextMixin = {}
-	function SlackersTweakSuite_SettingsTextMixin:Init(initializer)
-		local data = initializer:GetData()
-		self.LeftText:SetTextToFit(data.leftText)
-		self.MiddleText:SetTextToFit(data.middleText)
-		self.RightText:SetTextToFit(data.rightText)
-	end
+	local text = app.LinkCopiedFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+	text:SetPoint("CENTER", app.LinkCopiedFrame, "CENTER", 0, 0)
+	text:SetPoint("TOP", app.LinkCopiedFrame, "TOP", 0, 0)
+	text:SetJustifyH("CENTER")
+	text:SetText(app.IconReady .. " " .. L.SETTINGS_URL_COPIED)
 
-	local data = { leftText = L.SETTINGS_VERSION .. " |cffFFFFFF" .. C_AddOns.GetAddOnMetadata(appName, "Version") }
-	local text = layout:AddInitializer(Settings.CreateElementInitializer("SlackersTweakSuite_SettingsText", data))
-	function text:GetExtent()
-		return 14
-	end
-
-	local data = { leftText = L.SETTINGS_SUPPORT_TEXTLONG }
-	local text = layout:AddInitializer(Settings.CreateElementInitializer("SlackersTweakSuite_SettingsText", data))
-	function text:GetExtent()
-		return 28 + select(2, string.gsub(data.leftText, "\n", "")) * 12
-	end
+	app.LinkCopiedFrame.animation = app.LinkCopiedFrame:CreateAnimationGroup()
+	local fadeOut = app.LinkCopiedFrame.animation:CreateAnimation("Alpha")
+	fadeOut:SetFromAlpha(1)
+	fadeOut:SetToAlpha(0)
+	fadeOut:SetDuration(1)
+	fadeOut:SetStartDelay(1)
+	fadeOut:SetSmoothing("IN_OUT")
+	app.LinkCopiedFrame.animation:SetToFinalAlpha(true)
+	app.LinkCopiedFrame.animation:SetScript("OnFinished", function()
+		app.LinkCopiedFrame:Hide()
+	end)
 
 	StaticPopupDialogs["SLACKERSTWEAKSUITE_URL"] = {
 		text = L.SETTINGS_URL_COPY,
@@ -99,15 +100,14 @@ function app:CreateSettings()
 			editBox:SetText("")
 		end,
 	}
-	local function onSupportButtonClick()
-		StaticPopup_Show("SLACKERSTWEAKSUITE_URL", nil, nil, "https://buymeacoffee.com/Slackluster")
-	end
-	layout:AddInitializer(CreateSettingsButtonInitializer(L.SETTINGS_SUPPORT_TEXT, L.SETTINGS_SUPPORT_BUTTON, onSupportButtonClick, L.SETTINGS_SUPPORT_DESC, true))
 
-	local function onHelpButtonClick()
-		StaticPopup_Show("SLACKERSTWEAKSUITE_URL", nil, nil, "https://discord.gg/hGvF59hstx")
+	SlackersTweakSuite_SettingsTextMixin = {}
+	function SlackersTweakSuite_SettingsTextMixin:Init(initializer)
+		local data = initializer:GetData()
+		self.LeftText:SetTextToFit(data.leftText)
+		self.MiddleText:SetTextToFit(data.middleText)
+		self.RightText:SetTextToFit(data.rightText)
 	end
-	layout:AddInitializer(CreateSettingsButtonInitializer(L.SETTINGS_HELP_TEXT, L.SETTINGS_HELP_BUTTON, onHelpButtonClick, L.SETTINGS_HELP_DESC, true))
 
 	SlackersTweakSuite_SettingsExpandMixin = CreateFromMixins(SettingsExpandableSectionMixin)
 
@@ -137,7 +137,64 @@ function app:CreateSettings()
 		end
 	end
 
-	local function createExpandableSection(layout, name)
+	local category, layout
+
+	local function button(name, buttonName, description, func)
+		layout:AddInitializer(CreateSettingsButtonInitializer(name, buttonName, func, description, true))
+	end
+
+	local function checkbox(variable, name, description, default, callback, parentSetting, parentCheckbox)
+		local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, app.Settings, type(default), name, default)
+		local checkbox = Settings.CreateCheckbox(category, setting, description)
+
+		if parentSetting and parentCheckbox then
+			checkbox:SetParentInitializer(parentCheckbox, function() return parentSetting:GetValue() end)
+			if callback then
+				parentSetting:SetValueChangedCallback(callback)
+			end
+		elseif callback then
+			setting:SetValueChangedCallback(callback)
+		end
+
+		return setting, checkbox
+	end
+
+	local function checkboxDropdown(cbVariable, cbName, description, cbDefaultValue, ddVariable, ddDefaultValue, options, callback)
+		local cbSetting = Settings.RegisterAddOnSetting(category, appName.."_"..cbVariable, cbVariable, app.Settings, type(cbDefaultValue), cbName, cbDefaultValue)
+		local ddSetting = Settings.RegisterAddOnSetting(category, appName.."_"..ddVariable, ddVariable, app.Settings, type(ddDefaultValue), "", ddDefaultValue)
+		local function GetOptions()
+			local container = Settings.CreateControlTextContainer()
+			for _, option in ipairs(options) do
+				container:Add(option.value, option.name, option.description)
+			end
+			return container:GetData()
+		end
+
+		local initializer = CreateSettingsCheckboxDropdownInitializer(cbSetting, cbName, description, ddSetting, GetOptions, "")
+		layout:AddInitializer(initializer)
+
+		if callback then
+			cbSetting:SetValueChangedCallback(callback)
+			ddSetting:SetValueChangedCallback(callback)
+		end
+	end
+
+	local function dropdown(variable, name, description, default, options, callback)
+		local setting = Settings.RegisterAddOnSetting(category, appName.."_"..variable, variable, app.Settings, type(default), name, default)
+		local function GetOptions()
+			local container = Settings.CreateControlTextContainer()
+			for _, option in ipairs(options) do
+				container:Add(option.value, option.name, option.description)
+			end
+			return container:GetData()
+		end
+		Settings.CreateDropdown(category, setting, GetOptions, description)
+		if callback then
+			setting:SetValueChangedCallback(callback)
+		end
+	end
+
+	local function expandableHeader(name)
 		local initializer = CreateFromMixins(SettingsExpandableSectionInitializer)
 		local data = { name = name, expanded = false }
 
@@ -151,138 +208,83 @@ function app:CreateSettings()
 		end
 	end
 
-	local expandInitializer, isExpanded = createExpandableSection(layout, L.SETTINGS_KEYSLASH_TITLE .. app.IconNew)
+	local function header(name)
+		layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(name))
+	end
 
-		local data = { leftText = "|cffFFFFFF"
-			.. "/sts settings",
-		middleText =
-			L.SETTINGS_SLASH_SETTINGS
-		}
+	local function keybind(name, isExpanded)
+		local action = name
+		local bindingIndex = C_KeyBindings.GetBindingIndex(action)
+		local initializer = CreateKeybindingEntryInitializer(bindingIndex, true)
+		local keybind = layout:AddInitializer(initializer)
+		if isExpanded ~= nil then keybind:AddShownPredicate(isExpanded) end
+	end
+
+	local function text(leftText, middleText, rightText, customExtent, isExpanded)
+		local data = { leftText = leftText, middleText = middleText, rightText = rightText }
 		local text = layout:AddInitializer(Settings.CreateElementInitializer("SlackersTweakSuite_SettingsText", data))
 		function text:GetExtent()
+			if customExtent then return customExtent end
 			return 28 + select(2, string.gsub(data.leftText, "\n", "")) * 12
 		end
-		text:AddShownPredicate(isExpanded)
+		if isExpanded ~= nil then text:AddShownPredicate(isExpanded) end
+	end
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.GENERAL))
+	-- Settings
+	category, layout = Settings.RegisterVerticalLayoutCategory(app.Name)
+	Settings.RegisterAddOnCategory(category)
+	app.SettingsCategory = category
 
-	local variable, name, tooltip = "cursorGuide", L.SETTINGS_CURSORGUIDE_TITLE .. app.IconNew, L.SETTINGS_CURSORGUIDE_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		app:SetCursorGuideVisibility()
-	end)
+	text(L.SETTINGS_VERSION .. " |cffFFFFFF" .. C_AddOns.GetAddOnMetadata(appName, "Version"), nil, nil, 14)
+	text(L.SETTINGS_SUPPORT_TEXTLONG)
+	button(L.SETTINGS_SUPPORT_TEXT, L.SETTINGS_SUPPORT_BUTTON, L.SETTINGS_SUPPORT_DESC, function() StaticPopup_Show("SLACKERSTWEAKSUITE_URL", nil, nil, "https://buymeacoffee.com/Slackluster") end)
+	button(L.SETTINGS_HELP_TEXT, L.SETTINGS_HELP_BUTTON, L.SETTINGS_HELP_DESC, function() StaticPopup_Show("SLACKERSTWEAKSUITE_URL", nil, nil, "https://discord.gg/hGvF59hstx") end)
 
-	local variable, name, tooltip = "cursorGuideCombat", L.SETTINGS_CURSORGUIDE_COMBAT_TITLE, L.SETTINGS_CURSORGUIDE_COMBAT_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["cursorGuide"] end)
-	setting:SetValueChangedCallback(function()
-		app:SetCursorGuideVisibility()
-	end)
+	local _, isExpanded = expandableHeader(L.SETTINGS_KEYSLASH_TITLE)
 
-	local variable, name, tooltip = "disableAlwaysCompare", L.SETTINGS_COMPARE_TITLE, L.SETTINGS_COMPARE_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		app:ToggleAlwaysCompare()
-	end)
+		local leftText = { "|cffFFFFFF" ..
+			"/sts settings" }
+		local middleText = {
+			L.SLASH_OPEN_SETTINGS }
+		leftText = table.concat(leftText, "\n\n")
+		middleText = table.concat(middleText, "\n\n")
+		text(leftText, middleText, nil, nil, isExpanded)
 
-	local variable, name, tooltip = "backpackCount", L.SETTINGS_SPLITBAG_TITLE, L.SETTINGS_SPLITBAG_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		local freeSlots1 = C_Container.GetContainerNumFreeSlots(0) + C_Container.GetContainerNumFreeSlots(1) + C_Container.GetContainerNumFreeSlots(2) + C_Container.GetContainerNumFreeSlots(3) + C_Container.GetContainerNumFreeSlots(4)
-		local freeSlots2 = C_Container.GetContainerNumFreeSlots(5)
+	header(L.GENERAL)
 
-		if SlackersTweakSuite_Settings["backpackCount"] and C_Container.GetContainerNumSlots(5) ~= 0 then
-			MainMenuBarBackpackButtonCount:SetText("(" .. freeSlots1 .. "+" .. freeSlots2 .. ")")
-		else
-			MainMenuBarBackpackButtonCount:SetText("(" .. freeSlots1 + freeSlots2 .. ")")
-		end
-	end)
+	local parentSetting, parentCheckbox = checkbox("cursorGuide", L.SETTINGS_CURSORGUIDE_TITLE, L.SETTINGS_CURSORGUIDE_DESC, false, function() app:SetCursorGuideVisibility() end)
 
-	local variable, name, tooltip = "instantCatalyst", L.SETTINGS_CATALYST .. app.IconNew, L.SETTINGS_CATALYST_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("cursorGuideCombat", L.SETTINGS_CURSORGUIDE_COMBAT_TITLE, L.SETTINGS_CURSORGUIDE_COMBAT_DESC, true, function() app:SetCursorGuideVisibility() end, parentSetting, parentCheckbox)
 
-	local variable, name, tooltip = "instantCatalystTooltip", L.SETTINGS_INSTANT_TOOLTIP,L.SETTINGS_INSTANT_TOOLTIP_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["instantCatalyst"] end)
+	checkbox("disableAlwaysCompare", L.SETTINGS_COMPARE_TITLE, L.SETTINGS_COMPARE_DESC, true, function() app:ToggleAlwaysCompare() end)
 
-	local variable, name, tooltip = "instantVault", L.SETTINGS_VAULT .. app.IconNew, L.SETTINGS_VAULT_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("backpackCount", L.SETTINGS_SPLITBAG_TITLE, L.SETTINGS_SPLITBAG_DESC, true, function() app:SplitBackpackCount() end)
 
-	local variable, name, tooltip = "instantVaultTooltip", L.SETTINGS_INSTANT_TOOLTIP,L.SETTINGS_INSTANT_TOOLTIP_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	local subSetting = Settings.CreateCheckbox(category, setting, tooltip)
-	subSetting:SetParentInitializer(parentSetting, function() return SlackersTweakSuite_Settings["instantVault"] end)
+	local parentSetting, parentCheckbox = checkbox("instantCatalyst", L.SETTINGS_CATALYST, L.SETTINGS_CATALYST_DESC, true)
 
-	local variable, name, tooltip = "vendorAll", L.SETTINGS_VENDOR_ALL .. app.IconNew, L.SETTINGS_VENDOR_ALL_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("instantCatalystTooltip", L.SETTINGS_INSTANT_TOOLTIP, L.SETTINGS_INSTANT_TOOLTIP_DESC, true, nil, parentSetting, parentCheckbox)
 
-	local variable, name, tooltip = "hideGroupRolls", L.SETTINGS_HIDE_LOOT_ROLL_WINDOW .. app.IconNew, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName.."_"..variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
-	local parentSetting = Settings.CreateCheckbox(category, setting, tooltip)
+	local parentSetting, parentCheckbox = checkbox("instantVault", L.SETTINGS_VAULT, L.SETTINGS_VAULT_DESC, true)
 
-	local variable, name, tooltip = "queueSound", L.SETTINGS_QUEUESOUND_TITLE, L.SETTINGS_QUEUESOUND_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("instantVaultTooltip", L.SETTINGS_INSTANT_TOOLTIP,L.SETTINGS_INSTANT_TOOLTIP_DESC, true, nil, parentSetting, parentCheckbox)
 
-	local variable, name, tooltip = "showTokenPrice", L.SETTINGS_SHOWTOKENPRICE_TITLE, L.SETTINGS_SHOWTOKENPRICE_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("vendorAll", L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC, true)
 
-	local variable, name, tooltip = "tokyoDrift", L.SETTINGS_TOKYODRIFT_TITLE, L.SETTINGS_TOKYODRIFT_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, false)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("hideGroupRolls", L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC, false)
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.ADDONS))
+	checkbox("queueSound", L.SETTINGS_QUEUESOUND_TITLE, L.SETTINGS_QUEUESOUND_DESC, false)
 
-	local variable, name, tooltip = "handyNotes", L.SETTINGS_HANDYNOTESFIX_TITLE, L.SETTINGS_HANDYNOTESFIX_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
+	checkbox("showTokenPrice", L.SETTINGS_SHOWTOKENPRICE_TITLE, L.SETTINGS_SHOWTOKENPRICE_DESC, true)
 
-	local variable, name, tooltip = "underminePrices", L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE, L.SETTINGS_ORIBOSEXCHANGEFIX_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
-	setting:SetValueChangedCallback(function()
-		app:HideOribosMessage()
-	end)
+	checkbox("tokyoDrift", L.SETTINGS_TOKYODRIFT_TITLE, L.SETTINGS_TOKYODRIFT_DESC, false)
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.HOLIDAYS))
+	header(L.ADDONS)
 
-	local variable, name, tooltip = "candySit", L.SETTINGS_HALLOWSIT_TITLE, L.SETTINGS_HALLOWSIT_DESC
-	local setting = Settings.RegisterAddOnSetting(category, appName .. "_" .. variable, variable, SlackersTweakSuite_Settings, Settings.VarType.Boolean, name, true)
-	Settings.CreateCheckbox(category, setting, tooltip)
-end
+	checkbox("handyNotes", L.SETTINGS_HANDYNOTESFIX_TITLE, L.SETTINGS_HANDYNOTESFIX_DESC, true)
 
-function app:CreateLinkCopiedFrame()
-	app.LinkCopiedFrame= CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-	app.LinkCopiedFrame:SetPoint("CENTER")
-	app.LinkCopiedFrame:SetFrameStrata("TOOLTIP")
-	app.LinkCopiedFrame:SetHeight(1)
-	app.LinkCopiedFrame:SetWidth(1)
-	app.LinkCopiedFrame:Hide()
+	checkbox("underminePrices", L.SETTINGS_ORIBOSEXCHANGEFIX_TITLE, L.SETTINGS_ORIBOSEXCHANGEFIX_DESC, true, function() app:HideOribosMessage() end)
 
-	local string = app.LinkCopiedFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	string:SetPoint("CENTER", app.LinkCopiedFrame, "CENTER", 0, 0)
-	string:SetPoint("TOP", app.LinkCopiedFrame, "TOP", 0, 0)
-	string:SetJustifyH("CENTER")
-	string:SetText(app.IconReady .. " " .. L.SETTINGS_URL_COPIED)
+	header(L.HOLIDAYS)
 
-	app.LinkCopiedFrame.animation = app.LinkCopiedFrame:CreateAnimationGroup()
-	local fadeOut = app.LinkCopiedFrame.animation:CreateAnimation("Alpha")
-	fadeOut:SetFromAlpha(1)
-	fadeOut:SetToAlpha(0)
-	fadeOut:SetDuration(1)
-	fadeOut:SetStartDelay(1)
-	fadeOut:SetSmoothing("IN_OUT")
-	app.LinkCopiedFrame.animation:SetToFinalAlpha(true)
-	app.LinkCopiedFrame.animation:SetScript("OnFinished", function()
-		app.LinkCopiedFrame:Hide()
-	end)
+	checkbox("candySit", L.SETTINGS_HALLOWSIT_TITLE, L.SETTINGS_HALLOWSIT_DESC, true)
 end

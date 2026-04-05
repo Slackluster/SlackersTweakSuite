@@ -23,7 +23,7 @@ end)
 
 function app:ShowTokenPrice()
 	local function OnTooltipSetItem(tooltip, itemData)
-		if SlackersTweakSuite_Settings["showTokenPrice"] then
+		if app.Settings["showTokenPrice"] then
 
 			local _, itemLink, itemID
 			if itemData and itemData.id then

@@ -12,7 +12,7 @@ local L = app.locales
 -----------------
 
 app.Event:Register("UNIT_POWER_UPDATE", function(unitTarget, powerType)
-	if SlackersTweakSuite_Settings["tokyoDrift"] then
+	if app.Settings["tokyoDrift"] then
 		local function hasBuff(spellID)
 			for i = 1, 40 do
 				local aura = C_UnitAuras.GetBuffDataByIndex("player", i)

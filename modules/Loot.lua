@@ -14,7 +14,7 @@ TransmogLootHelper_Settings = TransmogLootHelper_Settings or {}
 ----------------------
 
 app.Event:Register("PLAYER_INTERACTION_MANAGER_FRAME_SHOW", function(type)
-	if not TransmogLootHelper_Settings["instantCatalyst"] and SlackersTweakSuite_Settings["instantCatalyst"] and type == 44 then
+	if not TransmogLootHelper_Settings["instantCatalyst"] and app.Settings["instantCatalyst"] and type == 44 then
 		ItemInteractionFrame.ButtonFrame.ActionButton:HookScript("OnClick", function()
 			if IsShiftKeyDown() then
 				ItemInteractionFrame:CompleteItemInteraction()
@@ -36,7 +36,7 @@ app.Event:Register("PLAYER_INTERACTION_MANAGER_FRAME_SHOW", function(type)
 			if IsShiftKeyDown() then
 				ItemInteractionFrame.ButtonFrame.ActionButton:SetText(app.IconReady .. " " .. L.INSTANT_BUTTON)
 			end
-			if not TransmogLootHelper_Settings["instantCatalystTooltip"] and SlackersTweakSuite_Settings["instantCatalystTooltip"] then
+			if not TransmogLootHelper_Settings["instantCatalystTooltip"] and app.Settings["instantCatalystTooltip"] then
 				GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
 				GameTooltip:SetText(L.INSTANT_TOOLTIP)
 				GameTooltip:Show()
@@ -56,7 +56,7 @@ end)
 -------------------------
 
 app.Event:Register("WEEKLY_REWARDS_UPDATE", function()
-	if not TransmogLootHelper_Settings["instantVault"] and SlackersTweakSuite_Settings["instantVault"] and WeeklyRewardsFrame and WeeklyRewardsFrame:IsShown() then
+	if not TransmogLootHelper_Settings["instantVault"] and app.Settings["instantVault"] and WeeklyRewardsFrame and WeeklyRewardsFrame:IsShown() then
 		WeeklyRewardsFrame.SelectRewardButton:HookScript("OnClick", function()
 			if IsShiftKeyDown() then
 				StaticPopupDialogs["CONFIRM_SELECT_WEEKLY_REWARD"].OnAccept(StaticPopup1, StaticPopup1.data)
@@ -77,7 +77,7 @@ app.Event:Register("WEEKLY_REWARDS_UPDATE", function()
 			if IsShiftKeyDown() then
 				WeeklyRewardsFrame.SelectRewardButton:SetText(app.IconReady .. " " .. L.INSTANT_BUTTON)
 			end
-			if not TransmogLootHelper_Settings["instantVaultTooltip"] and SlackersTweakSuite_Settings["instantVaultTooltip"] then
+			if not TransmogLootHelper_Settings["instantVaultTooltip"] and app.Settings["instantVaultTooltip"] then
 				GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
 				GameTooltip:SetText(L.INSTANT_TOOLTIP)
 				GameTooltip:Show()
@@ -97,7 +97,7 @@ end)
 ---------------------
 
 app.Event:Register("MERCHANT_SHOW", function()
-	if not TransmogLootHelper_Settings["vendorAll"] and SlackersTweakSuite_Settings["vendorAll"] then
+	if not TransmogLootHelper_Settings["vendorAll"] and app.Settings["vendorAll"] then
 		RunNextFrame(function()
 			SetMerchantFilter(1)
 			MerchantFrame_Update()
@@ -110,7 +110,7 @@ end)
 ---------------------------
 
 app.Event:Register("START_LOOT_ROLL", function(rollID, rollTime, lootHandle)
-	if not TransmogLootHelper_Settings["hideGroupRolls"] and SlackersTweakSuite_Settings["hideGroupRolls"] and GroupLootHistoryFrame then
+	if not TransmogLootHelper_Settings["hideGroupRolls"] and app.Settings["hideGroupRolls"] and GroupLootHistoryFrame then
 		local hidden = false
 		GroupLootHistoryFrame:HookScript("OnShow", function()
 			if hidden == false then

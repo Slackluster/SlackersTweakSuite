@@ -36,7 +36,7 @@ L.SETTINGS_URL_COPY =                    "Ctrl+C — скопировать:"
 L.SETTINGS_URL_COPIED =                  "Ссылка скопирована в буфер обмена"
 
 L.SETTINGS_KEYSLASH_TITLE =              SETTINGS_KEYBINDINGS_LABEL .. " & Слэш-команды" -- "Keybindings"
-L.SETTINGS_SLASH_SETTINGS =              "Откройте настройки"
+L.SLASH_OPEN_SETTINGS =                  "Откройте настройки"
 
 L.GENERAL =                              GENERAL -- "General"
 L.SETTINGS_CURSORGUIDE_TITLE =           "Направляющая курсора"

@@ -2,8 +2,7 @@
 -- Slacker's Tweak Suite: Core.lua --
 -------------------------------------
 
--- Initialisation
-local appName, app = ... -- Returns the addon name and a unique table
+local appName, app = ...
 app.locales = {}
 app.api = {}
 SlackersTweakSuite = app.api
@@ -17,7 +16,6 @@ local L = app.locales
 app.Event = CreateFrame("Frame")
 app.Event.handlers = {}
 
--- Register the event and add it to the handlers table
 function app.Event:Register(eventName, func)
 	if not self.handlers[eventName] then
 		self.handlers[eventName] = {}
@@ -26,7 +24,6 @@ function app.Event:Register(eventName, func)
 	table.insert(self.handlers[eventName], func)
 end
 
--- Run all handlers for a given event, when it fires
 app.Event:SetScript("OnEvent", function(self, event, ...)
 	if self.handlers[event] then
 		for _, handler in ipairs(self.handlers[event]) do
@@ -34,18 +31,6 @@ app.Event:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 end)
-
-----------------------
--- HELPER FUNCTIONS --
-----------------------
-
-function app:Colour(string)
-	return "|cff3FC7EB" .. string .. "|r"
-end
-
-function app:Print(...)
-	print(app.NameShort .. ":", ...)
-end
 
 -------------
 -- ON LOAD --
@@ -56,20 +41,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 		app.Flag = {}
 
 		C_ChatInfo.RegisterAddonMessagePrefix("SlackTweakSuite")
-
-		SLASH_RELOADUI1 = "/rl"
-		SlashCmdList.RELOADUI = ReloadUI
-
-		SLASH_SlackersTweakSuite1 = "/sts"
-		function SlashCmdList.SlackersTweakSuite(msg, editBox)
-			local command, rest = msg:match("^(%S*)%s*(.-)$")
-
-			if command == "settings" then
-				app:OpenSettings()
-			else
-				app:Print(L.INVALID_COMMAND)
-			end
-		end
+		app:CreateSlashCommands()
 	end
 end)
 
@@ -122,3 +94,35 @@ app.Event:Register("CHAT_MSG_ADDON", function(prefix, text, channel, sender, tar
 		end
 	end
 end)
+
+--------------------
+-- SLASH COMMANDS --
+--------------------
+
+function app:CreateSlashCommands()
+	SLASH_RELOADUI1 = "/rl"
+	SlashCmdList.RELOADUI = ReloadUI
+
+	SLASH_SlackersTweakSuite1 = "/sts"
+	function SlashCmdList.SlackersTweakSuite(msg, editBox)
+		local command, rest = msg:match("^(%S*)%s*(.-)$")
+
+		if command == "settings" then
+			app:OpenSettings()
+		else
+			app:Print(L.INVALID_COMMAND)
+		end
+	end
+end
+
+----------------------
+-- HELPER FUNCTIONS --
+----------------------
+
+function app:Colour(string)
+	return "|cff3FC7EB" .. string .. "|r"
+end
+
+function app:Print(...)
+	print(app.NameShort .. ":", ...)
+end

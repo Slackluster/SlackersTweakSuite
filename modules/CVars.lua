@@ -22,7 +22,7 @@ end)
 -----------------
 
 function app:ToggleAlwaysCompare()
-	if SlackersTweakSuite_Settings["disableAlwaysCompare"] then
+	if app.Settings["disableAlwaysCompare"] then
 		SetCVar("alwaysCompareItems", "0")
 	else
 		SetCVar("alwaysCompareItems", "1")

@@ -24,7 +24,7 @@ end)
 ----------------------------
 
 function app:DisableHandyNotesAltRMB()
-	if SlackersTweakSuite_Settings["handyNotes"] then
+	if app.Settings["handyNotes"] then
 		-- Thank you for this code, Numy, this saves me a lot of frustration
 		if C_AddOns.IsAddOnLoaded("HandyNotes") and LibStub("AceAddon-3.0"):GetAddon("HandyNotes") then
 			local f = LibStub("AceAddon-3.0"):GetAddon("HandyNotes"):GetModule("HandyNotes").ClickHandlerFrame
@@ -41,7 +41,7 @@ end
 
 function app:FixUnderminePrices()
 	local function OnTooltipSetItem(tooltip, itemData)
-		if SlackersTweakSuite_Settings["underminePrices"] then
+		if app.Settings["underminePrices"] then
 			local itemLink, itemID, secondaryItemLink, secondaryItemID
 			local _, primaryItemLink, primaryItemID = TooltipUtil.GetDisplayedItem(GameTooltip)
 			if tooltip.GetItem then _, secondaryItemLink, secondaryItemID = tooltip:GetItem() end
@@ -113,7 +113,7 @@ end
 
 local LibBattlePetTooltipLine = LibStub("LibBattlePetTooltipLine-1-0")
 hooksecurefunc("BattlePetToolTip_Show", function(...)
-	if SlackersTweakSuite_Settings["underminePrices"] then
+	if app.Settings["underminePrices"] then
 		if C_AddOns.IsAddOnLoaded("OribosExchange") then
 			local speciesID1, level, breedQuality, maxHealth, power, speed, bracketName = ...
 			local itemLink = "|cff0070dd|Hbattlepet:" .. speciesID1 .. ":" .. level .. ":" .. breedQuality .. ":" .. maxHealth .. ":" .. power .. ":" .. speed .. "|h" .. bracketName .. "|h|r"
@@ -169,7 +169,7 @@ hooksecurefunc("BattlePetToolTip_Show", function(...)
 end)
 
 function app:HideOribosMessage()
-	if SlackersTweakSuite_Settings["underminePrices"] then
+	if app.Settings["underminePrices"] then
 		if C_AddOns.IsAddOnLoaded("OribosExchange") then
 			OETooltip(false)
 

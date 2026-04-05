@@ -64,8 +64,8 @@ function app:SetCursorGuideVisibility()
 
 	RegisterAttributeDriver(app.CursorGuide, "state-visibility", "[combat] hide; hide")
 
-	if SlackersTweakSuite_Settings["cursorGuide"] then
-		if SlackersTweakSuite_Settings["cursorGuideCombat"] then
+	if app.Settings["cursorGuide"] then
+		if app.Settings["cursorGuideCombat"] then
 			RegisterAttributeDriver(app.CursorGuide, "state-visibility", "[combat] show; hide")
 		else
 			RegisterAttributeDriver(app.CursorGuide, "state-visibility", "[combat] show; show")
