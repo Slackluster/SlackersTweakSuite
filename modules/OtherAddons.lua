@@ -2,7 +2,6 @@
 -- Slacker's Tweak Suite: OtherAddons.lua --
 --------------------------------------------
 
--- Initialisation
 local appName, app = ...
 local api = app.api
 local L = app.locales
@@ -25,7 +24,7 @@ end)
 
 function app:DisableHandyNotesAltRMB()
 	if app.Settings["handyNotes"] then
-		-- Thank you for this code, Numy, this saves me a lot of frustration
+		-- Thank you Numy!
 		if C_AddOns.IsAddOnLoaded("HandyNotes") and LibStub("AceAddon-3.0"):GetAddon("HandyNotes") then
 			local f = LibStub("AceAddon-3.0"):GetAddon("HandyNotes"):GetModule("HandyNotes").ClickHandlerFrame
 			local f2 = CreateFrame("Frame")
@@ -46,7 +45,6 @@ function app:FixUnderminePrices()
 			local _, primaryItemLink, primaryItemID = TooltipUtil.GetDisplayedItem(GameTooltip)
 			if tooltip.GetItem then _, secondaryItemLink, secondaryItemID = tooltip:GetItem() end
 
-			-- Get our most accurate itemLink and itemID
 			itemID = primaryItemID or secondaryItemID
 			if itemID then
 				local _, _, _, _, _, _, _, _, _, _, _, classID, subclassID = C_Item.GetItemInfo(itemID)
@@ -57,7 +55,6 @@ function app:FixUnderminePrices()
 				end
 			end
 
-			-- Return if no link or BoP item
 			if not itemLink or select(14, C_Item.GetItemInfo(itemLink)) == 1 then return end
 
 			if C_AddOns.IsAddOnLoaded("OribosExchange") then
@@ -73,7 +70,6 @@ function app:FixUnderminePrices()
 					regionPrice = oeData["region"]
 				end
 
-				-- Prefer Auctionator data if available
 				if C_AddOns.IsAddOnLoaded("Auctionator") then
 					local price = Auctionator.API.v1.GetAuctionPriceByItemID(app.Name, itemID)
 
@@ -85,7 +81,6 @@ function app:FixUnderminePrices()
 				end
 
 				if marketPrice + regionPrice > 0 then
-					-- Round our number up to only show full gold, silver or copper values
 					if marketPrice >= 10000 then
 						marketPrice = math.ceil(marketPrice / 10000) * 10000
 					elseif marketPrice >= 100 then
@@ -132,7 +127,6 @@ hooksecurefunc("BattlePetToolTip_Show", function(...)
 				regionPrice = oeData["region"]
 			end
 
-			-- Prefer Auctionator data if available
 				if C_AddOns.IsAddOnLoaded("Auctionator") then
 					local price = Auctionator.API.v1.GetAuctionPriceByItemLink(app.Name, itemLink)
 
@@ -144,7 +138,6 @@ hooksecurefunc("BattlePetToolTip_Show", function(...)
 				end
 
 			if marketPrice + regionPrice > 0 then
-				-- Round our number up to only show full gold, silver or copper values
 					if marketPrice >= 10000 then
 						marketPrice = math.ceil(marketPrice / 10000) * 10000
 					elseif marketPrice >= 100 then
@@ -184,12 +177,10 @@ function app:HideOribosMessage()
 
 					ChatFrame1:RemoveMessagesByPredicate(function(m)
 						if issecretvalue(m) then return end
-						-- We're probably too fast, so mark removed as +1
 						if m:find(message) ~= nil then removed = removed + 1 end
 						return m:find(message) ~= nil
 					end)
 
-					-- Try again if we failed, but only 10 times max
 					if removed < 10 then
 						C_Timer.After(1, function()
 							RunNextFrame(removeMessage)

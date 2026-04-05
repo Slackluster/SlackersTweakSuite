@@ -2,7 +2,6 @@
 -- Slacker's Tweak Suite: Cursor.lua --
 ---------------------------------------
 
--- Initialisation
 local appName, app = ...
 local api = app.api
 local L = app.locales
