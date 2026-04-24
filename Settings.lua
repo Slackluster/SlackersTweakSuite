@@ -16,9 +16,6 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 		app.Settings = SlackersTweakSuite_Settings
 
 		app:CreateSettings()
-
-		-- Midnight cleanup
-		TagsTrivialTweaks_Settings = nil
 	end
 end)
 
