@@ -1,6 +1,7 @@
 ## Interface: 120007
 ## Title: |cff3FC7EBSlacker's Tweak Suite|r
 ## Author: Slackluster
+## Notes: A collection of QoL tweaks
 ## IconTexture: Interface\AddOns\SlackersTweakSuite\assets\icon.png
 ## Version: @project-version@
 ## X-Curse-Project-ID: 1362599
