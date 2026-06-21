@@ -3,7 +3,7 @@ A World of Warcraft addon. Download locations: [CurseForge](https://www.cursefor
 
 [![](https://media.forgecdn.net/attachments/1439/398/buymeacoffee-png.png)](https://www.buymeacoffee.com/Slackluster)
 
-**Slacker's Tweak Suite** is a collection of QoL tweaks.
+**Slacker's Tweak Suite (STS)** is a collection of QoL tweaks.
 
 **Features**
 - Cursor Guide: Show a guide around the cursor to help you keep track of it.
