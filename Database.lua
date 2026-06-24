@@ -12,9 +12,8 @@ app.NamePrefix = "SlackTweakSuite"
 
 -- Textures
 app.Icon = "Interface\\Icons\\inv_10_engineering_manufacturedparts_gear_frost"
-app.IconLMB = "|TInterface\\TutorialFrame\\UI-Tutorial-Frame:12:12:0:0:512:512:10:65:228:283|t"
-app.IconRMB = "|TInterface\\TutorialFrame\\UI-Tutorial-Frame:12:12:0:0:512:512:10:65:330:385|t"
-app.IconWaiting = "|TInterface\\RaidFrame\\ReadyCheck-Waiting:0|t"
-app.IconReady = "|TInterface\\RaidFrame\\ReadyCheck-Ready:0|t"
-app.IconNotReady = "|TInterface\\RaidFrame\\ReadyCheck-NotReady:0|t"
-app.IconNew = "|A:UI-Journeys-GreatVault-Tag-new:33:49|a"
+app.IconReady = CreateSimpleTextureMarkup("Interface\\RaidFrame\\ReadyCheck-Ready")
+app.IconNotReady = CreateSimpleTextureMarkup("Interface\\RaidFrame\\ReadyCheck-NotReady")
+app.IconLMB = CreateAtlasMarkup("housing-hotkey-icon-leftclick")
+app.IconRMB = CreateAtlasMarkup("housing-hotkey-icon-rightclick")
+app.IconNew = CreateAtlasMarkup("UI-Journeys-GreatVault-Tag-new")
