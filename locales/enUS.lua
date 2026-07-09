@@ -13,6 +13,8 @@ L.REQUIRES_RELOAD =                      "|cffFF0000" .. REQUIRES_RELOAD .. ".|r
 
 -- Slash commands
 L.INVALID_COMMAND =                      "Invalid command."
+L.DEBUG_ENABLED =                        "Debug mode enabled."
+L.DEBUG_DISABLED =                       "Debug mode disabled."
 
 -- Version comms
 L.NEW_VERSION_AVAILABLE =                "There is a newer version of " .. app.NameLong .. " available:"

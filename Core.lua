@@ -114,6 +114,14 @@ function app:CreateSlashCommands()
 
 		if command == "settings" then
 			app:OpenSettings()
+		elseif command == "debug" then
+			if app.Settings["debug"] then
+				app.Settings["debug"] = false
+				app:Print(L.DEBUG_DISABLED)
+			else
+				app.Settings["debug"] = true
+				app:Print(L.DEBUG_ENABLED)
+			end
 		else
 			app:Print(L.INVALID_COMMAND)
 		end
@@ -126,6 +134,12 @@ end
 
 function app:Colour(string)
 	return "|cff3FC7EB" .. string .. "|r"
+end
+
+function app:Debug(...)
+	if app.Settings["debug"] then
+		print(app.NameShort .. app:Colour(" Debug") .. ":", ...)
+	end
 end
 
 function app:Print(...)
