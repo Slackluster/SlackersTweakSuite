@@ -13,17 +13,19 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 		app.Settings.Cinematics = app.Settings.Cinematics or {}
 
 		local function handleMovie(movieID, source)
-			app.Debug(source)
+			app:Debug(source)
 			if not movieID then
-				app.Debug("No movieID found")
+				app:Debug("No movieID found")
 			elseif app.Settings.Cinematics[movieID] then
-				app.Debug("Skipped movieID", movieID)
+				app:Debug("Skipped movieID", movieID)
 				MovieFrame:Hide()
 				StopCinematic()
 				CancelScene()
 			elseif movieID then
-				app.Debug("Registering movieID", movieID)
-				app.Settings.Cinematics[movieID] = true
+				C_Timer.After(2, function()
+					app:Debug("Registering movieID", movieID)
+					app.Settings.Cinematics[movieID] = true
+				end)
 			end
 		end
 
@@ -35,7 +37,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 			handleMovie(movieID, "CinematicStarted")
 		end)
 
-		hooksecurefunc("MovieFrame_PlayMovie", function(self, movieID)
+		hooksecurefunc("MovieFrame_PlayMovie", function(self, movieID) -- unconfirmed
 			handleMovie(movieID, "MovieFrame_PlayMovie")
 		end)
 	end
