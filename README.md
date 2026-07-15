@@ -14,6 +14,8 @@ A World of Warcraft addon. Download locations: [CurseForge](https://www.cursefor
 - Disable Vendor Filter: Automatically set all vendor filters to All to display items normally not shown to your class.
 - Hide loot roll window: Hide the window that shows loot rolls and their results. You can show the window again with /loot.
 - Play Queue Sound: Play the queue sound on the Master channel when any queue pops, including battlegrounds and pet battles.
+- Play Ready Check Sound: Play the ready check sound on the Master channel when a ready check is initiated.
+- Play Countdown Sound: Play the countdown sound on the Master channel when any countdown / pull timer is initiated.
 - Show WoW Token Price: Show the current WoW Token price on the WoW Token item tooltip.
 - Tokyo Drift: Vroom vroom.
 - Disable HandyNotes Alt+RMB: Let STS disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.

@@ -24,7 +24,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 			elseif movieID then
 				C_Timer.After(2, function()
 					app:Debug("Registering movieID", movieID)
-					app.Settings.Cinematics[movieID] = true
+					app.Settings.Cinematics[movieID] = true -- DATETIME
 				end)
 			end
 		end

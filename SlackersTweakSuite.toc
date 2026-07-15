@@ -34,11 +34,10 @@ modules\Backpack.lua
 modules\Cinematics.lua
 modules\Cursor.lua
 modules\CVars.lua
-modules\Fun.lua
 modules\Holidays.lua
 modules\Loot.lua
 modules\OtherAddons.lua
-modules\Queue.lua
+modules\Sounds.lua
 modules\Tooltip.lua
 locales\enUS.lua
 locales\deDE.lua
