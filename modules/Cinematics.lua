@@ -10,21 +10,23 @@ local appName, app = ...
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		app.Settings.Cinematics = app.Settings.Cinematics or {}
+		app.Settings.cinematics = app.Settings.cinematics or {}
 
 		local function handleMovie(movieID, source)
 			app:Debug(source)
 			if not movieID then
 				app:Debug("No movieID found")
-			elseif app.Settings.Cinematics[movieID] then
+			elseif app.Settings.cinematics[movieID] then
 				app:Debug("Skipped movieID", movieID)
-				MovieFrame:Hide()
-				StopCinematic()
-				CancelScene()
+				-- MovieFrame:Hide()
+				-- StopCinematic()
+				-- CancelScene()
 			elseif movieID then
 				C_Timer.After(2, function()
 					app:Debug("Registering movieID", movieID)
-					app.Settings.Cinematics[movieID] = true -- DATETIME
+					local day, _, month, minute, hour, year = C_DateAndTime.GetCurrentCalendarTime()
+					local mapID = C_Map.GetBestMapForUnit("player")
+					app.Settings.cinematics[movieID] = year .. "-" .. month .. "-" .. day .. " " hour .. ":" .. minute .. " " .. format("%s (%d)", C_Map.GetMapInfo(mapID).name, mapID)
 				end)
 			end
 		end
