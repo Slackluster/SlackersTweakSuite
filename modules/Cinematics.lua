@@ -26,7 +26,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 					app:Debug("Registering movieID", movieID)
 					local day, _, month, minute, hour, year = C_DateAndTime.GetCurrentCalendarTime()
 					local mapID = C_Map.GetBestMapForUnit("player")
-					app.Settings.cinematics[movieID] = year .. "-" .. month .. "-" .. day .. " " hour .. ":" .. minute .. " " .. format("%s (%d)", C_Map.GetMapInfo(mapID).name, mapID)
+					app.Settings.cinematics[movieID] = year .. "-" .. month .. "-" .. day .. " " .. hour .. ":" .. minute .. " " .. format("%s (%d)", C_Map.GetMapInfo(mapID).name, mapID)
 				end)
 			end
 		end
