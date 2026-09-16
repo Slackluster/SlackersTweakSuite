@@ -15,6 +15,7 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 		SlackersTweakSuite_Cache = SlackersTweakSuite_Cache or {}
 		SlackersTweakSuite_Settings = SlackersTweakSuite_Settings or {}
 		app.Settings = SlackersTweakSuite_Settings
+		app.Settings.seenNew = app.Settings.seenNew or {}
 
 		app:CreateSettings()
 	end
