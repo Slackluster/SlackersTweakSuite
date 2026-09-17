@@ -24,8 +24,6 @@ end)
 ---------------------------
 
 app.Event:Register("MERCHANT_SHOW", function()
-	if C_AddOns.IsAddOnLoaded("ProfessionShoppingList") then return end -- Has this built in already
-
 	if app.Settings["disableMerchantCompare"] and not app.Flag.MerchantHook then
 		function MerchantItemButton_OnEnter(button)
 			GameTooltip:SetOwner(button, "ANCHOR_RIGHT");
