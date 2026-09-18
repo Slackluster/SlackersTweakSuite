@@ -285,7 +285,7 @@ function app:CreateSettings()
 	local _, isExpanded = expandableHeader(L.SETTINGS_KEYSLASH_TITLE)
 
 		local leftText = { "|cffFFFFFF" ..
-			"/sts settings" }
+			"/sts" }
 		local middleText = {
 			L.SLASH_OPEN_SETTINGS }
 		leftText = table.concat(leftText, "\n\n")

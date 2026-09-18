@@ -113,9 +113,7 @@ function app:CreateSlashCommands()
 	function SlashCmdList.SlackersTweakSuite(msg, editBox)
 		local command, rest = msg:match("^(%S*)%s*(.-)$")
 
-		if command == "settings" then
-			app:OpenSettings()
-		elseif command == "debug" then
+		if command == "debug" then
 			if app.Settings["debug"] then
 				app.Settings["debug"] = false
 				app:Print(L.DEBUG_DISABLED)
@@ -123,6 +121,8 @@ function app:CreateSlashCommands()
 				app.Settings["debug"] = true
 				app:Print(L.DEBUG_ENABLED)
 			end
+		elseif command == "" then
+			app:OpenSettings()
 		else
 			app:Print(L.INVALID_COMMAND)
 		end
