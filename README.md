@@ -6,6 +6,7 @@ A World of Warcraft addon. Download locations: [CurseForge](https://www.cursefor
 **Slacker's Tweak Suite (STS)** is a collection of QoL tweaks.
 
 **Features**
+
 Features marked with [F] are available on Forever; features marked with [R] are available on Retail.
 
 - General
