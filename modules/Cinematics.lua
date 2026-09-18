@@ -34,6 +34,12 @@ function app:SkipSeenCinematics()
 	end
 
 	EventRegistry:RegisterCallback("CinematicFrame.CinematicStarting", function()
+		if app.Flag.CinematicStarted then return end
+		app.Flag.CinematicStarted = true
+		C_Timer.After(2, function()
+			app.Flag.CinematicStarted = false
+		end)
+
 		local map = C_Map.GetBestMapForUnit("player")
 		if not map then return end
 		local zone = GetZoneText() or ""
@@ -45,6 +51,11 @@ function app:SkipSeenCinematics()
 
 	hooksecurefunc("CinematicStarted", function(movieType, movieID, canCancel)
 		if not movieID then return end
+		if app.Flag.CinematicStarted then return end
+		app.Flag.CinematicStarted = true
+		C_Timer.After(2, function()
+			app.Flag.CinematicStarted = false
+		end)
 
 		local key = "movie:" .. movieID
 		handleCinematic(key)
