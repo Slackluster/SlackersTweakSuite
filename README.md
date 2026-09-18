@@ -6,28 +6,31 @@ A World of Warcraft addon. Download locations: [CurseForge](https://www.cursefor
 **Slacker's Tweak Suite (STS)** is a collection of QoL tweaks.
 
 **Features**
+Features marked with [F] are available on Forever; features marked with [R] are available on Retail.
+
 - General
-  - Adds your current realm name to the character panel.
-  - Cursor Guide: Show a guide around the cursor to help you keep track of it.
-  - Skip Seen Cinematics: Automatically skip before-seen cinematics.
+  - [R&F] Adds your current realm name to the character panel.
+  - [R&F] Cursor Guide: Show a guide around the cursor to help you keep track of it.
+  - [R&F] Skip Seen Cinematics: Automatically skip before-seen cinematics.
 - Inventory
-  - Disable Always Compare: Disable the always compare items behavior added in 11.2.7.
-  - Show WoW Token Price: Show the current WoW Token price on the WoW Token item tooltip.
-  - Split Reagent Bag Count: Shows the free slots of your regular bags and your reagent bag separately on top of the backpack icon.
+  - [R&F] Disable Always Compare: Disable the always compare items behavior.
+  - [R] Show WoW Token Price: Show the current WoW Token price on the WoW Token item tooltip.
+  - [R] Split Reagent Bag Count: Shows the free slots of your regular bags and your reagent bag separately on top of the backpack icon.
 - Loot
-  - Instant Catalyst: Hold Shift to instantly catalyze an item, skipping the 5 second timer.
-  - Instant Great Vault: Hold Shift to instantly receive your reward from the Great Vault and skip the 5 second timer.
-  - Disable Vendor Filter: Automatically set all vendor filters to All to display items normally not shown to your class.
-  - Hide Loot Roll Window: Hide the window that shows loot rolls and their results. You can show the window again with /loot.
+  - [R] Instant Catalyst: Hold Shift to instantly catalyze an item, skipping the 5 second timer.
+  - [R] Instant Great Vault: Hold Shift to instantly receive your reward from the Great Vault and skip the 5 second timer.
+  - [R] Hide Loot Roll Window: Hide the window that shows loot rolls and their results. You can show the window again with /loot.
+  - [R] Disable Vendor Filter: Automatically set all vendor filters to All to display items normally not shown to your class.
+  - [R&F] Disable Vendor Compare: Disable the automatic gear comparison on vendor items.
 - Sound
-  - Play Queue Sound: Play the queue sound on the Master channel when any queue pops, including battlegrounds and pet battles.
-  - Play Ready Check Sound: Play the ready check sound on the Master channel when a ready check is initiated.
-  - Play Countdown Sound: Play the countdown sound on the Master channel when any countdown / pull timer is initiated.
+  - [R] Play Queue Sound: Play the queue sound on the Master channel when any queue pops, including battlegrounds and pet battles.
+  - [R] Play Ready Check Sound: Play the ready check sound on the Master channel when a ready check is initiated.
+  - [R] Play Countdown Sound: Play the countdown sound on the Master channel when any countdown / pull timer is initiated.
 - Addons
-  - Disable HandyNotes Alt+RMB: Disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.
-  - AH Price Tooltip: Show the most recent pricing information from either Auctionator, Oribos Exchange, or TradeSkillMaster
+  - [R] Disable HandyNotes Alt+RMB: Disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.
+  - [R] AH Price Tooltip: Show the most recent pricing information from either Auctionator, Oribos Exchange, or TradeSkillMaster
 - Holidays
-  - [Hallow's End] No Trick: Sit down before completing a Candy Bucket quest, preventing getting tricked and pacified.
+  - [R] [Hallow's End] No Trick: Sit down before completing a Candy Bucket quest, preventing getting tricked and pacified.
 
 ## If you are experiencing issues
 - Check if the issue occurs with only this addon enabled, or if the issue is a feature you can disable from the addon's settings menu.

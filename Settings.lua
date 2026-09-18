@@ -304,11 +304,17 @@ function app:CreateSettings()
 
 	checkbox("disableAlwaysCompare", L.SETTINGS_COMPARE_TITLE, L.SETTINGS_COMPARE_DESC, true, function() app:ToggleAlwaysCompare() end)
 
+	if app.Retail then
+
 	checkbox("showTokenPrice", L.SETTINGS_SHOWTOKENPRICE_TITLE, L.SETTINGS_SHOWTOKENPRICE_DESC, true)
 
 	checkbox("backpackCount", L.SETTINGS_SPLITBAG_TITLE, L.SETTINGS_SPLITBAG_DESC, true, function() app:SplitBackpackCount() end)
 
+	end
+
 	header(L.LOOT)
+
+	if app.Retail then
 
 	local parentSetting, parentCheckbox = checkbox("instantCatalyst", L.SETTINGS_CATALYST, L.SETTINGS_CATALYST_DESC, true)
 
@@ -322,7 +328,11 @@ function app:CreateSettings()
 
 	checkbox("vendorAll", L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC, true)
 
+	end
+
 	checkbox("disableMerchantCompare", L.SETTINGS_MERCHANT_COMPARE, L.SETTINGS_MERCHANT_COMPARE_DESC, true, nil, nil, nil, true)
+
+	if app.Retail then
 
 	header(L.SOUND)
 
@@ -341,4 +351,6 @@ function app:CreateSettings()
 	header(L.HOLIDAYS)
 
 	checkbox("candySit", L.SETTINGS_HALLOWSIT_TITLE, L.SETTINGS_HALLOWSIT_DESC, true)
+
+	end
 end

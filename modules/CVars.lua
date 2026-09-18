@@ -16,9 +16,9 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	end
 end)
 
------------------
--- Token price --
------------------
+----------------------------
+-- Disable Always Compare --
+----------------------------
 
 function app:ToggleAlwaysCompare()
 	if app.Settings["disableAlwaysCompare"] then

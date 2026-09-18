@@ -1,4 +1,4 @@
-## Interface: 120100
+## Interface: 16001, 120100
 ## Title: |cff3FC7EBSlacker's Tweak Suite|r
 ## Author: Slackluster
 ## Notes: A collection of QoL tweaks
@@ -26,20 +26,22 @@ libs\ChatThrottleLib\ChatThrottleLib.xml
 libs\LibBattlePetTooltipLine\LibStub\LibStub.lua
 libs\LibBattlePetTooltipLine\LibBattlePetTooltipLine.lua
 Core.lua
+_[Game].lua
 Database.lua
 Settings.lua
 FrameTemplates.xml
 modules\AlwaysActive.lua
-modules\Backpack.lua
+modules\Backpack.lua [AllowLoadGameType standard]
 modules\Cinematics.lua
 modules\Cursor.lua
 modules\CVars.lua
-modules\Holidays.lua
-modules\Loot.lua
-modules\Merchant.lua
-modules\OtherAddons.lua
-modules\Sounds.lua
-modules\Tooltip.lua
+modules\Holidays.lua [AllowLoadGameType standard]
+modules\Loot.lua [AllowLoadGameType standard]
+modules\MerchantCompare.lua
+modules\MerchantFilter.lua [AllowLoadGameType standard]
+modules\OtherAddons.lua [AllowLoadGameType standard]
+modules\Sounds.lua [AllowLoadGameType standard]
+modules\Tooltip.lua [AllowLoadGameType standard]
 locales\enUS.lua
 locales\deDE.lua
 locales\esES.lua
