@@ -49,7 +49,7 @@ L.SETTINGS_SKIPCINEMATICS_TITLE_DESC =   "Автоматически пропу�
 
 L.INVENTORY =                            INVENTORY_TOOLTIP -- "Inventory"
 L.SETTINGS_COMPARE_TITLE =               "Отключить постоянное сравнение"
-L.SETTINGS_COMPARE_DESC =                "Отключить поведение постоянного сравнения предметов, добавленное в патче 11.2.7."
+L.SETTINGS_COMPARE_DESC =                "Отключить поведение постоянного сравнения предметов."
 L.SETTINGS_SPLITBAG_TITLE =              "Разделение количества мешков с реагентами"
 L.SETTINGS_SPLITBAG_DESC =               "Показывает свободные слоты ваших обычных сумок и сумки с реагентами отдельно над значком рюкзака."
 
@@ -65,7 +65,7 @@ L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Скрыть окно, показыв�
 L.SETTINGS_VENDOR_ALL =                  "Отключить фильтр торговца"
 L.SETTINGS_VENDOR_ALL_DESC =             "Автоматически устанавливать все фильтры торговца на |cffFFFFFFВсе|r, чтобы отображать предметы, обычно не показываемые для вашего класса."
 L.SETTINGS_MERCHANT_COMPARE =            "Отключить сравнение у торговцев"
-L.SETTINGS_MERCHANT_COMPARE_DESC =       "Отключает автоматическое сравнение экипировки при просмотре товаров у торговцев, добавленное в обновлении 12.1."
+L.SETTINGS_MERCHANT_COMPARE_DESC =       "Отключает автоматическое сравнение экипировки при просмотре товаров у торговцев."
 
 L.SOUND =                                SOUND -- "Sound"
 L.SETTINGS_QUEUESOUND_TITLE =            "Воспроизвести звук очереди"

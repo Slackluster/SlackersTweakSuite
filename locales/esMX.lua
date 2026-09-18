@@ -49,7 +49,7 @@ L.SETTINGS_URL_COPIED =                  "Enlace copiado al portapapeles"
 
 -- L.INVENTORY =                            INVENTORY_TOOLTIP -- "Inventory"
 -- L.SETTINGS_COMPARE_TITLE =               "Disable Always Compare"
--- L.SETTINGS_COMPARE_DESC =                "Disable the always compare items behavior added in 11.2.7."
+-- L.SETTINGS_COMPARE_DESC =                "Disable the always compare items behavior."
 -- L.SETTINGS_SPLITBAG_TITLE =              "Split Reagent Bag Count"
 -- L.SETTINGS_SPLITBAG_DESC =               "Shows the free slots of your regular bags and your reagent bag separately on top of the backpack icon."
 
@@ -65,7 +65,7 @@ L.SETTINGS_URL_COPIED =                  "Enlace copiado al portapapeles"
 -- L.SETTINGS_VENDOR_ALL =                  "Disable Vendor Filter"
 -- L.SETTINGS_VENDOR_ALL_DESC =             "Automatically set all vendor filters to |cffFFFFFFAll|r to display items normally not shown to your class."
 -- L.SETTINGS_MERCHANT_COMPARE =            "Disable Vendor Compare"
--- L.SETTINGS_MERCHANT_COMPARE_DESC =       "Disable the automatic gear comparison on vendor items added with 12.1."
+-- L.SETTINGS_MERCHANT_COMPARE_DESC =       "Disable the automatic gear comparison on vendor items."
 
 -- L.SOUND =                                SOUND -- "Sound"
 -- L.SETTINGS_QUEUESOUND_TITLE =            "Play Queue Sound"
