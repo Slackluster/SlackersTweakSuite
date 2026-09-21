@@ -63,8 +63,8 @@ function app:SetCursorGuideVisibility()
 
 	RegisterAttributeDriver(app.CursorGuide, "state-visibility", "[combat] hide; hide")
 
-	if app.Settings["cursorGuide"] then
-		if app.Settings["cursorGuideCombat"] then
+	if app.Settings.cursorGuide then
+		if app.Settings.cursorGuideCombat then
 			RegisterAttributeDriver(app.CursorGuide, "state-visibility", "[combat] show; hide")
 		else
 			RegisterAttributeDriver(app.CursorGuide, "state-visibility", "[combat] show; show")

@@ -12,7 +12,7 @@ local L = app.locales
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		SlackersTweakSuite_Cache.Commodities = SlackersTweakSuite_Cache.Commodities or {}
+		app.Cache.Commodities = app.Cache.Commodities or {}
 
 		app:DisableHandyNotesAltRMB()
 		app:ShowRecentAHPrice()
@@ -35,7 +35,7 @@ end)
 ----------------------------
 
 function app:DisableHandyNotesAltRMB()
-	if app.Settings["handyNotes"] then
+	if app.Settings.handyNotes then
 		-- Thank you Numy!
 		if C_AddOns.IsAddOnLoaded("HandyNotes") and LibStub("AceAddon-3.0"):GetAddon("HandyNotes") then
 			local f = LibStub("AceAddon-3.0"):GetAddon("HandyNotes"):GetModule("HandyNotes").ClickHandlerFrame
@@ -52,7 +52,7 @@ end
 
 function app:ShowRecentAHPrice()
 	local function OnTooltipSetItem(tooltip, itemData)
-		if app.Settings["ahPriceTooltip"] and app.Flag.IsAuctionAddonLoaded then
+		if app.Settings.ahPriceTooltip and app.Flag.IsAuctionAddonLoaded then
 			local itemID = app:GetTooltipItem(tooltip, itemData)
 			if not itemID then return end
 			local bindType = select(14, C_Item.GetItemInfo(itemID))
@@ -75,7 +75,7 @@ end
 
 local LibBattlePetTooltipLine = LibStub("LibBattlePetTooltipLine-1-0")
 hooksecurefunc("BattlePetToolTip_Show", function(...)
-	if app.Settings["ahPriceTooltip"] and app.Flag.IsAuctionAddonLoaded then
+	if app.Settings.ahPriceTooltip and app.Flag.IsAuctionAddonLoaded then
 		local speciesID, level, breedQuality, maxHealth, power, speed, bracketName = ...
 		local itemLink = "|cff0070dd|Hbattlepet:" .. speciesID .. ":" .. level .. ":" .. breedQuality .. ":" .. maxHealth .. ":" .. power .. ":" .. speed .. "|h" .. bracketName .. "|h|r"
 
@@ -93,7 +93,7 @@ hooksecurefunc("BattlePetToolTip_Show", function(...)
 end)
 
 function app:HideOribosMessage()
-	if app.Settings["ahPriceTooltip"] and C_AddOns.IsAddOnLoaded("OribosExchange") then
+	if app.Settings.ahPriceTooltip and C_AddOns.IsAddOnLoaded("OribosExchange") then
 		OETooltip(false)
 
 		if C_AddOns.IsAddOnLoaded("Chattynator") then
@@ -124,7 +124,7 @@ end
 
 function app:MarkItemAsCommodity(commodityItemID)
 	if commodityItemID then
-		SlackersTweakSuite_Cache.Commodities[commodityItemID] = true
+		app.Cache.Commodities[commodityItemID] = true
 	else
 		for bag = -4, 16 do
 			local slots = C_Container.GetContainerNumSlots(bag)
@@ -135,7 +135,7 @@ function app:MarkItemAsCommodity(commodityItemID)
 						local commodityStatus = C_AuctionHouse.GetItemCommodityStatus(itemLocation)
 						if commodityStatus == Enum.ItemCommodityStatus.Commodity then
 							local itemID = C_Item.GetItemID(itemLocation)
-							SlackersTweakSuite_Cache.Commodities[itemID] = true
+							app.Cache.Commodities[itemID] = true
 						end
 					end
 				end

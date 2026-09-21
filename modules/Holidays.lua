@@ -11,7 +11,7 @@ local L = app.locales
 ------------------
 
 app.Event:Register("PLAYER_SOFT_INTERACT_CHANGED", function(oldTarget, newTarget)
-	if app.Settings["candySit"] then
+	if app.Settings.candySit then
 		local candyBucket = {
 			"Candy Bucket",
 			"Eimer mit Süßigkeiten",
@@ -38,7 +38,7 @@ app.Event:Register("PLAYER_SOFT_INTERACT_CHANGED", function(oldTarget, newTarget
 end)
 
 app.Event:Register("QUEST_COMPLETE", function()
-	if app.Settings["candySit"] and app.SoftTarget and app.SoftTarget == "Candy Bucket" then
+	if app.Settings.candySit and app.SoftTarget and app.SoftTarget == "Candy Bucket" then
 		DoEmote("SIT", "player", true)
 	end
 end)

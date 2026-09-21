@@ -11,7 +11,7 @@ local L = app.locales
 -----------
 
 function app:PlayQueueSound()
-	if app.Settings["queueSound"] then
+	if app.Settings.queueSound then
 		PlaySoundFile(567478, "Master")
 	end
 end
@@ -33,7 +33,7 @@ end)
 -----------------
 
 function app:PlayReadyCheckSound()
-	if app.Settings["readyCheckSound"] then
+	if app.Settings.readyCheckSound then
 		PlaySoundFile(567478, "Master")
 	end
 end
@@ -64,7 +64,7 @@ function app:PlayCountdownSound(seconds)
 			app.Flag.Countdown = false
 		end
 	end
-	if app.Settings["countdownSound"] then
+	if app.Settings.countdownSound then
 		countdown(seconds)
 	end
 end

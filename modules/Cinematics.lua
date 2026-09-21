@@ -10,7 +10,7 @@ local appName, app = ...
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		SlackersTweakSuite_Cache.Cinematics = SlackersTweakSuite_Cache.Cinematics or {}
+		app.Cache.Cinematics = app.Cache.Cinematics or {}
 
 		app:SkipSeenCinematics()
 	end
@@ -22,10 +22,10 @@ end)
 
 function app:SkipSeenCinematics()
 	local function handleCinematic(key)
-		if not SlackersTweakSuite_Cache.Cinematics[key] then
-			SlackersTweakSuite_Cache.Cinematics[key] = true
+		if not app.Cache.Cinematics[key] then
+			app.Cache.Cinematics[key] = true
 			app:Debug("Registering cinematic", key)
-		elseif app.Settings["skipSeenCinematics"] then
+		elseif app.Settings.skipSeenCinematics then
 			MovieFrame:Hide()
 			StopCinematic()
 			CancelScene()

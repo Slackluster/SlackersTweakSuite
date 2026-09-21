@@ -22,7 +22,7 @@ end)
 
 function app:ShowTokenPrice()
 	local function OnTooltipSetItem(tooltip, itemData)
-		if app.Settings["showTokenPrice"] then
+		if app.Settings.showTokenPrice then
 			local itemID = app:GetTooltipItem(tooltip, itemData)
 			if not itemID then return end
 

@@ -12,9 +12,6 @@ local L = app.locales
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		SlackersTweakSuite_Cache = SlackersTweakSuite_Cache or {}
-		SlackersTweakSuite_Settings = SlackersTweakSuite_Settings or {}
-		app.Settings = SlackersTweakSuite_Settings
 		app.Settings.seen = app.Settings.seen or {}
 
 		app:CreateSettings()
@@ -27,7 +24,7 @@ end)
 
 function app:OpenSettings()
 	if InCombatLockdown() then
-		app:Print(ERR_AFFECTING_COMBAT..".")
+		app:Print(ERR_AFFECTING_COMBAT .. ".")
 	else
 		Settings.OpenToCategory(app.SettingsCategory:GetID())
 	end

@@ -11,7 +11,7 @@ local L = app.locales
 ---------------------------
 
 app.Event:Register("MERCHANT_SHOW", function()
-	if app.Settings["disableMerchantCompare"] and not app.Flag.MerchantHook then
+	if app.Settings.disableMerchantCompare and not app.Flag.MerchantHook then
 		function MerchantItemButton_OnEnter(button)
 			GameTooltip:SetOwner(button, "ANCHOR_RIGHT");
 			if ( MerchantFrame.selectedTab == 1 ) then

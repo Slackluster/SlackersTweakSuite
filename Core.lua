@@ -38,8 +38,13 @@ end)
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 	if addOnName == appName then
-		app.Flag = {}
+		SlackersTweakSuite_Cache = SlackersTweakSuite_Cache or {}
+		SlackersTweakSuite_Settings = SlackersTweakSuite_Settings or {}
+
 		app.Version = C_AddOns.GetAddOnMetadata(appName, "Version")
+		app.Cache = SlackersTweakSuite_Cache
+		app.Settings = SlackersTweakSuite_Settings
+		app.Flag = {}
 
 		C_ChatInfo.RegisterAddonMessagePrefix("SlackTweakSuite")
 		app:CreateSlashCommands()
@@ -114,11 +119,11 @@ function app:CreateSlashCommands()
 		local command, rest = msg:match("^(%S*)%s*(.-)$")
 
 		if command == "debug" then
-			if app.Settings["debug"] then
-				app.Settings["debug"] = false
+			if app.Settings.debug then
+				app.Settings.debug = false
 				app:Print(L.DEBUG_DISABLED)
 			else
-				app.Settings["debug"] = true
+				app.Settings.debug = true
 				app:Print(L.DEBUG_ENABLED)
 			end
 		elseif command == "" then
@@ -138,7 +143,7 @@ function app:Colour(string, colour)
 end
 
 function app:Debug(...)
-	if app.Settings["debug"] then
+	if app.Settings.debug then
 		print(app.NameShort .. app:Colour(" Debug") .. ":", ...)
 	end
 end
@@ -195,7 +200,7 @@ function app:RoundedItemValue(itemID, itemLink, speciesID)
 		end
 	end
 
-	if SlackersTweakSuite_Cache.Commodities and SlackersTweakSuite_Cache.Commodities[itemID] then
+	if app.Cache.Commodities and app.Cache.Commodities[itemID] then
 		for _, value in ipairs(realmPrice) do
 			table.insert(regionPrice, value)
 		end

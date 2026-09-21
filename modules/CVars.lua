@@ -21,7 +21,7 @@ end)
 ----------------------------
 
 function app:ToggleAlwaysCompare()
-	if app.Settings["disableAlwaysCompare"] then
+	if app.Settings.disableAlwaysCompare then
 		SetCVar("alwaysCompareItems", "0")
 	else
 		SetCVar("alwaysCompareItems", "1")
