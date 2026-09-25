@@ -9,7 +9,7 @@ local appName, app = ...
 local L = app.locales
 
 -- General
-L.REQUIRES_RELOAD =                      "|cffFF0000" .. REQUIRES_RELOAD .. ".|r Use |cffFFFFFF/reload|r or relog." -- "Requires Reload"
+L.REQUIRES_RELOAD =                      REQUIRES_RELOAD -- "Requires Reload"
 
 -- Slash commands
 L.INVALID_COMMAND =                      "Invalid command."
@@ -17,7 +17,7 @@ L.DEBUG_ENABLED =                        "Debug mode enabled."
 L.DEBUG_DISABLED =                       "Debug mode disabled."
 
 -- Version comms
-L.NEW_VERSION_AVAILABLE =                "There is a newer version of " .. app.NameLong .. " available:"
+L.NEW_VERSION_AVAILABLE =                "There is a newer version of %s available:" -- %s becomes the addon name
 
 -- UI
 L.REGION =                               "%s Region" -- %s becomes an abbreviated region name such as "EU" or "US"
@@ -61,9 +61,9 @@ L.SETTINGS_VAULT_DESC =                  "Hold Shift to instantly receive your r
 L.SETTINGS_INSTANT_TOOLTIP =             "Show Tooltip"
 L.SETTINGS_INSTANT_TOOLTIP_DESC =        "Show the tooltip explaining how this feature works. The button text still changes when this is disabled."
 L.SETTINGS_HIDE_LOOT_ROLL_WINDOW =       "Hide Loot Roll Window"
-L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Hide the window that shows loot rolls and their results. You can show the window again with |cff00ccff/loot|r."
+L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Hide the window that shows loot rolls and their results. You can show the window again with %s." -- %s becomes /loot
 L.SETTINGS_VENDOR_ALL =                  "Disable Vendor Filter"
-L.SETTINGS_VENDOR_ALL_DESC =             "Automatically set all vendor filters to |cffFFFFFFAll|r to display items normally not shown to your class."
+L.SETTINGS_VENDOR_ALL_DESC =             "Automatically set all vendor filters to \"All\" to display items normally not shown to your class."
 L.SETTINGS_MERCHANT_COMPARE =            "Disable Vendor Compare"
 L.SETTINGS_MERCHANT_COMPARE_DESC =       "Disable the automatic gear comparison on vendor items."
 
@@ -79,7 +79,7 @@ L.SETTINGS_SHOWTOKENPRICE_DESC =         "Show the current WoW Token price on th
 
 L.ADDONS =                               "Addons"
 L.SETTINGS_HANDYNOTESFIX_TITLE =         "Disable HandyNotes Alt " .. app.IconRMB
-L.SETTINGS_HANDYNOTESFIX_DESC =          "Disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.\n\n" .. L.REQUIRES_RELOAD
+L.SETTINGS_HANDYNOTESFIX_DESC =          "Disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead."
 L.SETTINGS_AHPRICETOOLTIP_TITLE =        "AH Price Tooltip"
 L.SETTINGS_AHPRICETOOLTIP_DESC =         "Show the most recent pricing information from either Auctionator, Oribos Exchange, or TradeSkillMaster.\n" ..
                                          "Also rounds the value and fixes profession window, recipe, and pet prices."

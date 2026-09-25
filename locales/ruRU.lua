@@ -9,7 +9,7 @@ local appName, app = ...
 local L = app.locales
 
 -- General
-L.REQUIRES_RELOAD =                      "|cffFF0000" .. REQUIRES_RELOAD .. ".|r Используйте |cffFFFFFF/reload|r или перезайдите." -- "Requires Reload"
+L.REQUIRES_RELOAD =                      REQUIRES_RELOAD -- "Requires Reload"
 
 -- Slash commands
 L.INVALID_COMMAND =                      "Неверная команда."
@@ -17,7 +17,7 @@ L.DEBUG_ENABLED =                        "Режим отладки включе
 L.DEBUG_DISABLED =                       "Режим отладки выключен."
 
 -- Version comms
-L.NEW_VERSION_AVAILABLE =                "Доступна более новая версия " .. app.NameLong .. " аддона:"
+L.NEW_VERSION_AVAILABLE =                "Доступна более новая версия %s аддона:" -- %s becomes the addon name
 
 -- UI
 L.REGION =                               "%s Регион" -- %s becomes an abbreviated region name such as "EU" or "US"
@@ -61,9 +61,9 @@ L.SETTINGS_VAULT_DESC =                  "Удерживайте Shift, чтоб
 L.SETTINGS_INSTANT_TOOLTIP =             "Показывать подсказку"
 L.SETTINGS_INSTANT_TOOLTIP_DESC =        "Показывать подсказку, объясняющую, как работает эта функция. Текст кнопки все равно меняется, если это отключено."
 L.SETTINGS_HIDE_LOOT_ROLL_WINDOW =       "Скрыть окно бросков лута"
-L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Скрыть окно, показывающее броски лута и их результаты. Вы можете снова показать окно с помощью |cff00ccff/loot|r."
+L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC =  "Скрыть окно, показывающее броски лута и их результаты. Вы можете снова показать окно с помощью %s." -- %s becomes /loot
 L.SETTINGS_VENDOR_ALL =                  "Отключить фильтр торговца"
-L.SETTINGS_VENDOR_ALL_DESC =             "Автоматически устанавливать все фильтры торговца на |cffFFFFFFВсе|r, чтобы отображать предметы, обычно не показываемые для вашего класса."
+L.SETTINGS_VENDOR_ALL_DESC =             "Автоматически устанавливать все фильтры торговца на \"Все\", чтобы отображать предметы, обычно не показываемые для вашего класса."
 L.SETTINGS_MERCHANT_COMPARE =            "Отключить сравнение у торговцев"
 L.SETTINGS_MERCHANT_COMPARE_DESC =       "Отключает автоматическое сравнение экипировки при просмотре товаров у торговцев."
 
@@ -79,7 +79,7 @@ L.SETTINGS_SHOWTOKENPRICE_DESC =         "Отображать текущую ц
 
 L.ADDONS =                               "Аддоны"
 L.SETTINGS_HANDYNOTESFIX_TITLE =         "Отключить HandyNotes Alt " .. app.IconRMB
-L.SETTINGS_HANDYNOTESFIX_DESC =          "Отключить привязку клавиш HandyNotes на карте, вместо этого включив ее для точек маршрута TomTom.\n\n" .. L.REQUIRES_RELOAD
+L.SETTINGS_HANDYNOTESFIX_DESC =          "Отключить привязку клавиш HandyNotes на карте, вместо этого включив ее для точек маршрута TomTom."
 L.SETTINGS_AHPRICETOOLTIP_TITLE =        "Подсказка с ценой аукциона"
 L.SETTINGS_AHPRICETOOLTIP_DESC =         "Показывать самую свежую информацию о ценах из Auctionator, Oribos Exchange или TradeSkillMaster.\n" ..
                                           "Также округляет значения и исправляет отображение цен в окне профессий, рецептах и ценах на питомцев."

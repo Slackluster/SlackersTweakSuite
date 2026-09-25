@@ -321,7 +321,7 @@ function app:CreateSettings()
 
 	checkbox("instantVaultTooltip", L.SETTINGS_INSTANT_TOOLTIP,L.SETTINGS_INSTANT_TOOLTIP_DESC, true, nil, parentSetting, parentCheckbox)
 
-	checkbox("hideGroupRolls", L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC, false)
+	checkbox("hideGroupRolls", L.SETTINGS_HIDE_LOOT_ROLL_WINDOW, string.format(L.SETTINGS_HIDE_LOOT_ROLL_WINDOW_DESC, "|cff00ccff/loot|r"), false)
 
 	checkbox("vendorAll", L.SETTINGS_VENDOR_ALL, L.SETTINGS_VENDOR_ALL_DESC, true)
 
@@ -341,7 +341,7 @@ function app:CreateSettings()
 
 	header(L.ADDONS)
 
-	checkbox("handyNotes", L.SETTINGS_HANDYNOTESFIX_TITLE, L.SETTINGS_HANDYNOTESFIX_DESC, true)
+	checkbox("handyNotes", L.SETTINGS_HANDYNOTESFIX_TITLE, L.SETTINGS_HANDYNOTESFIX_DESC .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, true)
 
 	checkbox("ahPriceTooltip", L.SETTINGS_AHPRICETOOLTIP_TITLE, L.SETTINGS_AHPRICETOOLTIP_DESC, true, function() app:HideOribosMessage() end, nil, nil, true)
 
