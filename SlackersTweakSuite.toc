@@ -26,7 +26,6 @@ libs\ChatThrottleLib\ChatThrottleLib.xml
 libs\LibBattlePetTooltipLine\LibStub\LibStub.lua
 libs\LibBattlePetTooltipLine\LibBattlePetTooltipLine.lua
 Core.lua
-_[Game].lua
 Database.lua
 Settings.lua
 FrameTemplates.xml
