@@ -37,6 +37,6 @@ end)
 
 app.Event:Register("QUEST_COMPLETE", function()
 	if app.Settings.candySit and app.SoftTarget and app.SoftTarget == "Candy Bucket" then
-		DoEmote("SIT", "player", true)
+		C_ChatInfo.PerformEmote("SIT")
 	end
 end)
