@@ -35,7 +35,7 @@ end)
 
 function app:DisableHandyNotesAltRMB()
 	if app.Settings.handyNotes then
-		-- Thank you Numy!
+		-- Thank you, Numy!
 		if C_AddOns.IsAddOnLoaded("HandyNotes") and LibStub("AceAddon-3.0"):GetAddon("HandyNotes") then
 			local f = LibStub("AceAddon-3.0"):GetAddon("HandyNotes"):GetModule("HandyNotes").ClickHandlerFrame
 			local f2 = CreateFrame("Frame")
