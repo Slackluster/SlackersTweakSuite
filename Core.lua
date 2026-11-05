@@ -170,3 +170,13 @@ function app:GetTooltipItem(tooltip, itemData)
 	end
 	return itemID, itemLink
 end
+
+------------------
+-- SHARED MEDIA --
+------------------
+
+local LSM = LibStub("LibSharedMedia-3.0")
+LSM:Register("font", "gg sans Regular", "Interface\\AddOns\\SlackersTweakSuite\\assets\\gg sans Regular.ttf")
+LSM:Register("font", "gg sans Medium", "Interface\\AddOns\\SlackersTweakSuite\\assets\\gg sans Medium.ttf")
+LSM:Register("font", "gg sans Semibold", "Interface\\AddOns\\SlackersTweakSuite\\assets\\gg sans Semibold.ttf")
+LSM:Register("font", "gg sans Bold", "Interface\\AddOns\\SlackersTweakSuite\\assets\\gg sans Bold.ttf")
