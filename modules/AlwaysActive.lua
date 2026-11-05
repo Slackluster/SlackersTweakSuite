@@ -9,6 +9,8 @@ local appName, app = ...
 ----------------
 
 function app:UpdateCharacterFrameTitle()
+	if not app.Retail then return end
+
 	if CharacterFrame and CharacterFrame:IsVisible() and CharacterFrameTitleText then
 		RunNextFrame(function()
 			local realm = GetNormalizedRealmName()
