@@ -40,7 +40,7 @@ modules\Holidays.lua [AllowLoadGameType standard]
 modules\Loot.lua [AllowLoadGameType standard]
 modules\MerchantCompare.lua
 modules\MerchantFilter.lua [AllowLoadGameType standard]
-modules\OtherAddons.lua [AllowLoadGameType standard]
+modules\OtherAddons.lua
 modules\Sounds.lua [AllowLoadGameType standard]
 modules\Tooltip.lua [AllowLoadGameType standard]
 locales\enUS.lua

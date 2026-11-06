@@ -42,6 +42,18 @@ app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
 			app.Retail = true
 		elseif WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
 			app.Forever = true
+
+			if C_GameRules.IsGameRuleActive(Enum.GameRule.HardcoreRuleset) then
+				app.Ruleset = app.Enum.Ruleset.Hardcore
+			elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) and C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
+				app.Ruleset = app.Enum.Ruleset.PvPRoleplay
+			elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) then
+				app.Ruleset = app.Enum.Ruleset.Roleplay
+			elseif C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
+				app.Ruleset = app.Enum.Ruleset.PvP
+			else
+				app.Ruleset = app.Enum.Ruleset.Normal
+			end
 		end
 
 		SlackersTweakSuite_Cache = SlackersTweakSuite_Cache or {}

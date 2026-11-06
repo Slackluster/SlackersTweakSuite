@@ -34,7 +34,7 @@ end)
 ----------------------------
 
 function app:DisableHandyNotesAltRMB()
-	if app.Settings.handyNotes then
+	if app.Retail and app.Settings.handyNotes then
 		-- Thank you, Numy!
 		if C_AddOns.IsAddOnLoaded("HandyNotes") and LibStub("AceAddon-3.0"):GetAddon("HandyNotes") then
 			local f = LibStub("AceAddon-3.0"):GetAddon("HandyNotes"):GetModule("HandyNotes").ClickHandlerFrame
@@ -84,7 +84,7 @@ function app:RoundedItemValue(itemID, itemLink, speciesID)
 		end
 	end
 
-	if app.Cache.Commodities and app.Cache.Commodities[itemID] then
+	if app.Forever or (app.Cache.Commodities and app.Cache.Commodities[itemID]) then
 		for _, value in ipairs(realmPrice) do
 			table.insert(regionPrice, value)
 		end
@@ -125,7 +125,11 @@ function app:ShowRecentAHPrice()
 					tooltip:AddDoubleLine(GetNormalizedRealmName(), GetMoneyString(realmPrice, true))
 				end
 				if regionPrice > 0 then
-					tooltip:AddDoubleLine(string.format(L.REGION, GetCurrentRegionName()), GetMoneyString(regionPrice, true))
+					if app.Retail then
+						tooltip:AddDoubleLine(string.format(L.REGION, GetCurrentRegionName()), GetMoneyString(regionPrice, true))
+					else
+						tooltip:AddDoubleLine(L.RULESET[app.Ruleset] .. " " .. L.RULESET[0], GetMoneyString(regionPrice, true))
+					end
 				end
 			end
 		end
@@ -146,7 +150,11 @@ hooksecurefunc("BattlePetToolTip_Show", function(...)
 				LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, GetNormalizedRealmName(), GetMoneyString(realmPrice, true))
 			end
 			if regionPrice > 0 then
-				LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, string.format(L.REGION, GetCurrentRegionName()), GetMoneyString(regionPrice, true))
+				if app.Retail then
+					LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, string.format(L.REGION, GetCurrentRegionName()), GetMoneyString(regionPrice, true))
+				else
+					LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, L.RULESET[app.Ruleset] .. " " .. L.RULESET[0], GetMoneyString(regionPrice, true))
+				end
 			end
 		end
 	end
@@ -182,6 +190,8 @@ function app:HideOribosMessage()
 	end
 end
 
+if not app.Retail then return end
+
 function app:MarkItemAsCommodity(commodityItemID)
 	if commodityItemID then
 		app.Cache.Commodities[commodityItemID] = true
@@ -203,6 +213,10 @@ function app:MarkItemAsCommodity(commodityItemID)
 		end
 	end
 end
+
+app.Event:Register("AUCTION_HOUSE_SHOW", function()
+	app:MarkItemAsCommodity()
+end)
 
 app.Event:Register("COMMODITY_PURCHASED", function(itemID, quantity)
 	app:MarkItemAsCommodity(itemID)

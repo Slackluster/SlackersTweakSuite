@@ -357,11 +357,19 @@ function app:CreateSettings()
 
 	checkbox("countdownSound", L.PLAY_COUNTDOWN_SOUND, L.PLAY_COUNTDOWN_SOUND_DESC, false)
 
+	end
+
 	header(L.ADDONS)
+
+	if app.Retail then
 
 	checkbox("handyNotes", L.DISABLE_HANDYNOTES_ALTRMB, L.DISABLE_HANDYNOTES_ALTRMB_DESC .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, true)
 
+	end
+
 	checkbox("ahPriceTooltip", L.AH_PRICE_TOOLTIP, L.AH_PRICE_TOOLTIP_DESC1 .. "\n" .. L.AH_PRICE_TOOLTIP_DESC2, true, function() app:HideOribosMessage() end)
+
+	if app.Retail then
 
 	header(L.HOLIDAYS)
 

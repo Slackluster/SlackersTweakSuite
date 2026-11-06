@@ -16,3 +16,13 @@ app.IconReady = CreateSimpleTextureMarkup("Interface\\RaidFrame\\ReadyCheck-Read
 app.IconNotReady = CreateSimpleTextureMarkup("Interface\\RaidFrame\\ReadyCheck-NotReady")
 app.IconLMB = CreateAtlasMarkup("housing-hotkey-icon-leftclick")
 app.IconRMB = CreateAtlasMarkup("housing-hotkey-icon-rightclick")
+
+app.Enum = {
+	Ruleset = {
+		Normal = 1,
+		PvP = 2,
+		Roleplay = 3,
+		PvPRoleplay = 4,
+		Hardcore = 5,
+	}
+}
