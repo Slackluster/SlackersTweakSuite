@@ -317,9 +317,9 @@ function app:CreateSettings()
 
 	checkbox("showTokenPrice", L.SHOW_TOKEN_PRICE, L.SHOW_TOKEN_PRICE_DESC, true)
 
-	checkbox("backpackCount", L.SPLIT_BAG_COUNT, L.SPLIT_BAG_COUNT_DESC, true, function() app:SplitBackpackCount() end)
-
 	end
+
+	checkbox("backpackCount", L.SPLIT_BAG_COUNT, L.SPLIT_BAG_COUNT_DESC, true, function() app:SplitBackpackCount() end)
 
 	header(L.LOOT)
 
