@@ -4,24 +4,6 @@
 
 local appName, app = ...
 
-----------------------
--- BACKPACK SORTING --
-----------------------
-
-app.Event:Register("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
-	if app.Settings.backpackCleanup == 1 then
-		C_Container.SetSortBagsRightToLeft(false)
-	elseif app.Settings.backpackCleanup == 2 then
-		C_Container.SetSortBagsRightToLeft(true)
-	end
-
-	if app.Settings.backpackLoot == 1 then
-		C_Container.SetInsertItemsLeftToRight(true)
-	elseif app.Settings.backpackLoot == 2 then
-		C_Container.SetInsertItemsLeftToRight(false)
-	end
-end)
-
 -----------------------------
 -- SPLIT REAGENT BAG COUNT --
 -----------------------------
