@@ -111,6 +111,7 @@ function app:RoundedItemValue(itemID, itemLink, speciesID)
 end
 
 function app:ShowRecentAHPrice()
+	C_Timer.After(1, function() -- Delay so this tooltip entry gets hooked last
 	local function OnTooltipSetItem(tooltip, itemData)
 		if app.Settings.ahPriceTooltip and app.Flag.IsAuctionAddonLoaded then
 			local itemID = app:GetTooltipItem(tooltip, itemData)
@@ -135,6 +136,7 @@ function app:ShowRecentAHPrice()
 		end
 	end
 	TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, OnTooltipSetItem)
+	end)
 end
 
 local LibBattlePetTooltipLine = LibStub("LibBattlePetTooltipLine-1-0")
