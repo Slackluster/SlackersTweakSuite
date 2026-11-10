@@ -10,13 +10,13 @@ local L = app.locales
 -------------
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
-	if addOnName == appName then
-		app.Cache.Commodities = app.Cache.Commodities or {}
+	if addOnName ~= appName then return end
 
-		app:DisableHandyNotesAltRMB()
-		app:ShowRecentAHPrice()
-		app:HideOribosMessage()
-	end
+	app.Cache.Commodities = app.Cache.Commodities or {}
+
+	app:DisableHandyNotesAltRMB()
+	app:ShowRecentAHPrice()
+	app:HideOribosMessage()
 end)
 
 app.Event:Register("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)

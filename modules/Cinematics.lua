@@ -9,11 +9,11 @@ local appName, app = ...
 -------------
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
-	if addOnName == appName then
-		app.Cache.Cinematics = app.Cache.Cinematics or {}
+	if addOnName ~= appName then return end
 
-		app:SkipSeenCinematics()
-	end
+	app.Cache.Cinematics = app.Cache.Cinematics or {}
+
+	app:SkipSeenCinematics()
 end)
 
 --------------------------

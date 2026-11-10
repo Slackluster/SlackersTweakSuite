@@ -11,16 +11,16 @@ local L = app.locales
 -------------
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
-	if addOnName == appName then
-		app.Settings.merchantRows = app.Settings.merchantRows or 5
-		app.Settings.merchantColumns = app.Settings.merchantColumns or 2
+	if addOnName ~= appName then return end
 
-		app.MerchantFrame = {}
-		app.MerchantFrame.slots = {}
+	app.Settings.merchantRows = app.Settings.merchantRows or 5
+	app.Settings.merchantColumns = app.Settings.merchantColumns or 2
 
-		app:ExtendedMerchantFrame()
-		app:Brutosaur()
-	end
+	app.MerchantFrame = {}
+	app.MerchantFrame.slots = {}
+
+	app:ExtendedMerchantFrame()
+	app:Brutosaur()
 end)
 
 local DEFAULT_ROWS, DEFAULT_COLUMNS = 5, 2

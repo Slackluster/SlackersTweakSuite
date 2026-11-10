@@ -37,36 +37,36 @@ end)
 -------------
 
 app.Event:Register("ADDON_LOADED", function(addOnName, containsBindings)
-	if addOnName == appName then
-		if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
-			app.Retail = true
-		elseif WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
-			app.Forever = true
+	if addOnName ~= appName then return end
 
-			if C_GameRules.IsGameRuleActive(Enum.GameRule.HardcoreRuleset) then
-				app.Ruleset = app.Enum.Ruleset.Hardcore
-			elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) and C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
-				app.Ruleset = app.Enum.Ruleset.PvPRoleplay
-			elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) then
-				app.Ruleset = app.Enum.Ruleset.Roleplay
-			elseif C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
-				app.Ruleset = app.Enum.Ruleset.PvP
-			else
-				app.Ruleset = app.Enum.Ruleset.Normal
-			end
+	if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+		app.Retail = true
+	elseif WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+		app.Forever = true
+
+		if C_GameRules.IsGameRuleActive(Enum.GameRule.HardcoreRuleset) then
+			app.Ruleset = app.Enum.Ruleset.Hardcore
+		elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) and C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
+			app.Ruleset = app.Enum.Ruleset.PvPRoleplay
+		elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) then
+			app.Ruleset = app.Enum.Ruleset.Roleplay
+		elseif C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
+			app.Ruleset = app.Enum.Ruleset.PvP
+		else
+			app.Ruleset = app.Enum.Ruleset.Normal
 		end
-
-		SlackersTweakSuite_Cache = SlackersTweakSuite_Cache or {}
-		SlackersTweakSuite_Settings = SlackersTweakSuite_Settings or {}
-
-		app.Version = C_AddOns.GetAddOnMetadata(appName, "Version")
-		app.Cache = SlackersTweakSuite_Cache
-		app.Settings = SlackersTweakSuite_Settings
-		app.Flag = {}
-
-		C_ChatInfo.RegisterAddonMessagePrefix("SlackTweakSuite")
-		app:CreateSlashCommands()
 	end
+
+	SlackersTweakSuite_Cache = SlackersTweakSuite_Cache or {}
+	SlackersTweakSuite_Settings = SlackersTweakSuite_Settings or {}
+
+	app.Version = C_AddOns.GetAddOnMetadata(appName, "Version")
+	app.Cache = SlackersTweakSuite_Cache
+	app.Settings = SlackersTweakSuite_Settings
+	app.Flag = {}
+
+	C_ChatInfo.RegisterAddonMessagePrefix("SlackTweakSuite")
+	app:CreateSlashCommands()
 end)
 
 -------------------
