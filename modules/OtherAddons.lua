@@ -96,9 +96,9 @@ function app:RoundedItemValue(itemID, itemLink, speciesID)
 	local function getPrice(table)
 		for _, value in ipairs(table) do
 			if value.price > 0 then
-				if value.price >= 10000 then
+				if app.Retail and value.price >= 10000 then
 					value.price = math.floor(value.price / 10000) * 10000
-				elseif value.price >= 100 then
+				elseif value.price >= 100 and (app.Retail or value.price >= 10000) then
 					value.price = math.floor(value.price / 100) * 100
 				end
 				return value.price
