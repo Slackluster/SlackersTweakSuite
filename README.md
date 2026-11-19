@@ -16,14 +16,19 @@ Features marked with [F] are available on Forever; features marked with [R] are 
 - Inventory
   - [R&F] Disable Always Compare: Disable the always compare items behavior.
   - [R] Show WoW Token Price: Show the current WoW Token price on the WoW Token item tooltip.
-  - [R] Split Reagent Bag Count: Shows the free slots of your regular bags and your reagent bag separately on top of the backpack icon.
+  - [R&F] Split Reagent Bag Count: Shows the free slots of your regular bags and your reagent bag separately on top of the backpack icon.
 - Loot
   - [R] Instant Catalyst: Hold Shift to instantly catalyze an item, skipping the 5 second timer.
   - [R] Instant Great Vault: Hold Shift to instantly receive your reward from the Great Vault and skip the 5 second timer.
   - [R] Hide Loot Roll Window: Hide the window that shows loot rolls and their results. You can show the window again with /loot.
+  - [R&F] Loot Rolls in Edit Mode: Add the Need/Greed loot roll frame to Edit Mode.
   - [R&F] Extended Merchant Frame: Allows configuring how many rows and columns of items are displayed on merchants, and adds a search filter.
   - [R] Disable Merchant Filter: Automatically set all merchant filters to All to display items normally not shown to your class.
   - [R&F] Disable Merchant Compare: Disable the automatic gear comparison on merchant items.
+- World
+  - [R] [Hallow's End] No Trick: Sit down before completing a Candy Bucket quest, preventing getting tricked and pacified.
+  - [F] Quest Sparkles: Show sparkles on quest objects and quest givers.
+  - [F] Minimap Target: Show your target and focus on the minimap.
 - Sound
   - [R] Play Queue Sound: Play the queue sound on the Master channel when any queue pops, including battlegrounds and pet battles.
   - [R] Play Ready Check Sound: Play the ready check sound on the Master channel when a ready check is initiated.
@@ -31,8 +36,6 @@ Features marked with [F] are available on Forever; features marked with [R] are 
 - Addons
   - [R] Disable HandyNotes Alt+RMB: Disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.
   - [R] AH Price Tooltip: Show the most recent pricing information from either Auctionator, Oribos Exchange, or TradeSkillMaster
-- Holidays
-  - [R] [Hallow's End] No Trick: Sit down before completing a Candy Bucket quest, preventing getting tricked and pacified.
 
 ![](https://media.forgecdn.net/attachments/2094/477/sts-01-gif.gif)
 
