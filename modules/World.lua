@@ -89,3 +89,27 @@ app.Event:Register("CVAR_UPDATE", function(cvarName, value)
 		app:QuestSparkles()
 	end
 end)
+
+--------------------
+-- MINIMAP TARGET --
+--------------------
+
+function app:MinimapTarget(enabled)
+	if not app.Forever then return end
+
+	for i = 1, C_Minimap.GetNumTrackingTypes() do
+		local filter = C_Minimap.GetTrackingFilter(i)
+		if filter and (filter.filterID == Enum.MinimapTrackingFilter.Target or filter.filterID == Enum.MinimapTrackingFilter.Focus) then
+			C_Minimap.SetTracking(i, enabled)
+		end
+	end
+end
+
+app.Event:Register("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
+	if not app.Forever or not app.Settings.minimapTarget then return end
+
+	app:MinimapTarget(app.Settings.minimapTarget)
+	C_Timer.After(10, function()
+		app:MinimapTarget(app.Settings.minimapTarget)
+	end)
+end)

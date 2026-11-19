@@ -70,6 +70,8 @@ local L = app.locales
 -- L.QUEST_SPARKLES =                       "Quest Sparkles"
 -- L.QUEST_SPARKLES_DESC1 =                 "Show sparkles on quest objects and quest givers. (These settings cannot be separated.)"
 -- L.QUEST_SPARKLES_DESC2 =                 "Disabling this feature requires a client restart."
+-- L.MINIMAP_TARGET =                       "Minimap Target"
+-- L.MINIMAP_TARGET_DESC =                  "Show your target and focus on the minimap."
 
 -- L.SOUND =                                SOUND -- "Sound"
 -- L.PLAY_QUEUE_SOUND =                     "Play Queue Sound"

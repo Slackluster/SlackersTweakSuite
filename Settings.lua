@@ -332,6 +332,7 @@ function app:CreateSettings()
 	end
 	if app.Forever then
 		checkbox("questSparkles", L.QUEST_SPARKLES, L.QUEST_SPARKLES_DESC1 .. "\n\n|cffFF0000" .. L.QUEST_SPARKLES_DESC2, false, function() app:QuestSparkles(true) end, nil, nil, true)
+		checkbox("minimapTarget", L.MINIMAP_TARGET, L.MINIMAP_TARGET_DESC, true, function() app:MinimapTarget(app.Settings.minimapTarget) end, nil, nil, true)
 	end
 
 	if app.Retail then
