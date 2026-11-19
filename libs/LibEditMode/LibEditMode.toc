@@ -1,0 +1,17 @@
+## Interface: 120105, 120107, 16001, 20506, 50504
+## Author: p3lim
+## Version: 19
+## Title: Lib: EditMode
+## Notes: Library that allows easy frame integration with Edit Mode
+## OptionalDeps: LibStub
+## AllowLoadGameType: standard, camelot, mists, tbc
+
+## X-Curse-Project-ID: 699702
+## X-WoWI-ID: 26456
+## X-Wago-ID: ZQ6aWjGW
+
+LibStub\LibStub.lua
+
+embed.xml
+
+#tests\button.lua

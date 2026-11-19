@@ -320,6 +320,7 @@ function app:CreateSettings()
 	checkbox("instantVaultTooltip", L.SHOW_TOOLTIP, L.SHOW_TOOLTIP_SETTING_DESC, true, nil, parentSetting, parentCheckbox)
 	checkbox("hideGroupRolls", L.HIDE_LOOT_ROLL_WINDOW, string.format(L.HIDE_LOOT_ROLL_WINDOW_DESC, "|cff00CCFF/loot|r"), false)
 	end
+	checkbox("editModeLootRolls", L.LEM_LOOT_ROLLS, L.LEM_LOOT_ROLLS_DESC .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, false, nil, nil, nil, true)
 	checkbox("extendedMerchant", L.EXTENDED_MERCHANT_FRAME, L.EXTENDED_MERCHANT_FRAME_DESC .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, false, nil, nil, nil, true)
 	if app.Retail then
 	checkbox("vendorAll", L.DISABLE_MERCHANT_FILTER, L.DISABLE_MERCHANT_FILTER_DESC, true)
