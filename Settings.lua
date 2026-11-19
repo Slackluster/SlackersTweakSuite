@@ -292,88 +292,58 @@ function app:CreateSettings()
 	button(L.FEEDBACK_AND_HELP, L.DISCORD, L.JOIN_DISCORD_SERVER, function() StaticPopup_Show("SLACKERSTWEAKSUITE_URL", nil, nil, "https://discord.gg/hGvF59hstx") end)
 
 	local _, isExpanded = expandableHeader(L.KEYBINDINGS_AND_SLASH_COMMANDS)
-
-		local leftText = { "|cffFFFFFF" ..
-			"/sts" }
-		local middleText = {
-			L.OPEN_SETTINGS }
-		leftText = table.concat(leftText, "\n\n")
-		middleText = table.concat(middleText, "\n\n")
-		text(leftText, middleText, nil, nil, isExpanded)
+	local leftText = { "|cffFFFFFF" ..
+		"/sts" }
+	local middleText = {
+		L.OPEN_SETTINGS }
+	leftText = table.concat(leftText, "\n\n")
+	middleText = table.concat(middleText, "\n\n")
+	text(leftText, middleText, nil, nil, isExpanded)
 
 	header(L.GENERAL)
-
 	local parentSetting, parentCheckbox = checkbox("cursorGuide", L.CURSOR_GUIDE, L.CURSOR_GUIDE_DESC, false, function() app:SetCursorGuideVisibility() end)
-
 	checkbox("cursorGuideCombat", L.CURSOR_GUIDE_COMBAT, L.CURSOR_GUIDE_COMBAT_DESC, true, function() app:SetCursorGuideVisibility() end, parentSetting, parentCheckbox)
-
 	checkbox("skipSeenCinematics", L.SKIP_SEEN_CINEMATICS, L.SKIP_SEEN_CINEMATICS_DESC, false)
 
 	header(L.INVENTORY)
-
 	checkbox("disableAlwaysCompare", L.DISABLE_ALWAYS_COMPARE, L.DISABLE_ALWAYS_COMPARE_DESC, true, function() app:ToggleAlwaysCompare() end)
-
 	if app.Retail then
-
 	checkbox("showTokenPrice", L.SHOW_TOKEN_PRICE, L.SHOW_TOKEN_PRICE_DESC, true)
-
 	end
-
 	checkbox("backpackCount", L.SPLIT_BAG_COUNT, L.SPLIT_BAG_COUNT_DESC, true, function() app:SplitBackpackCount() end)
 
 	header(L.LOOT)
-
 	if app.Retail then
-
 	local parentSetting, parentCheckbox = checkbox("instantCatalyst", L.INSTANT_CATALYST, L.INSTANT_CATALYST_DESC, true)
-
 	checkbox("instantCatalystTooltip", L.SHOW_TOOLTIP, L.SHOW_TOOLTIP_SETTING_DESC, true, nil, parentSetting, parentCheckbox)
-
 	local parentSetting, parentCheckbox = checkbox("instantVault", L.INSTANT_VAULT, L.INSTANT_VAULT_DESC, true)
-
 	checkbox("instantVaultTooltip", L.SHOW_TOOLTIP, L.SHOW_TOOLTIP_SETTING_DESC, true, nil, parentSetting, parentCheckbox)
-
 	checkbox("hideGroupRolls", L.HIDE_LOOT_ROLL_WINDOW, string.format(L.HIDE_LOOT_ROLL_WINDOW_DESC, "|cff00CCFF/loot|r"), false)
-
 	end
-
 	checkbox("extendedMerchant", L.EXTENDED_MERCHANT_FRAME, L.EXTENDED_MERCHANT_FRAME_DESC .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, false, nil, nil, nil, true)
-
 	if app.Retail then
-
 	checkbox("vendorAll", L.DISABLE_MERCHANT_FILTER, L.DISABLE_MERCHANT_FILTER_DESC, true)
-
 	end
-
 	checkbox("disableMerchantCompare", L.DISABLE_MERCHANT_COMPARE, L.DISABLE_MERCHANT_COMPARE_DESC1 .. "\n" .. L.DISABLE_MERCHANT_COMPARE_DESC2 .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, true)
 
+	header(L.WORLD)
 	if app.Retail then
+	checkbox("candySit", L.HALLOWSEND_NOTRICK, L.HALLOWSEND_NOTRICK_DESC, true)
+	end
+	if app.Forever then
+		checkbox("questSparkles", L.QUEST_SPARKLES, L.QUEST_SPARKLES_DESC1 .. "\n\n|cffFF0000" .. L.QUEST_SPARKLES_DESC2, false, function() app:QuestSparkles(true) end, nil, nil, true)
+	end
 
+	if app.Retail then
 	header(L.SOUND)
-
 	checkbox("queueSound", L.PLAY_QUEUE_SOUND, L.PLAY_QUEUE_SOUND_DESC, false)
-
 	checkbox("readyCheckSound", L.PLAY_READYCHECK_SOUND, L.PLAY_READYCHECK_SOUND_DESC, false)
-
 	checkbox("countdownSound", L.PLAY_COUNTDOWN_SOUND, L.PLAY_COUNTDOWN_SOUND_DESC, false)
-
 	end
 
 	header(L.ADDONS)
-
 	if app.Retail then
-
 	checkbox("handyNotes", L.DISABLE_HANDYNOTES_ALTRMB, L.DISABLE_HANDYNOTES_ALTRMB_DESC .. "\n\n|cffFF0000" .. L.REQUIRES_RELOAD, true)
-
 	end
-
 	checkbox("ahPriceTooltip", L.AH_PRICE_TOOLTIP, L.AH_PRICE_TOOLTIP_DESC1 .. "\n" .. L.AH_PRICE_TOOLTIP_DESC2, true, function() app:HideOribosMessage() end)
-
-	if app.Retail then
-
-	header(L.HOLIDAYS)
-
-	checkbox("candySit", L.HALLOWSEND_NOTRICK, L.HALLOWSEND_NOTRICK_DESC, true)
-
-	end
 end

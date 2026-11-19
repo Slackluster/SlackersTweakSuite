@@ -37,7 +37,7 @@ modules\Cursor.lua
 modules\CVars.lua
 modules\ExtendedMerchantFrame.lua
 modules\Holidays.lua [AllowLoadGameType standard]
-modules\Loot.lua [AllowLoadGameType standard]
+modules\Loot.lua
 modules\MerchantCompare.lua
 modules\MerchantFilter.lua [AllowLoadGameType standard]
 modules\OtherAddons.lua

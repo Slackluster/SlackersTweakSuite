@@ -64,6 +64,13 @@ L.DISABLE_MERCHANT_COMPARE =             "Отключить сравнение 
 L.DISABLE_MERCHANT_COMPARE_DESC1 =       "Отключает автоматическое сравнение экипировки при просмотре товаров у торговцев."
 L.DISABLE_MERCHANT_COMPARE_DESC2 =       "Может быть несовместимо с аддонами, которые фильтруют ассортимент торговца."
 
+L.WORLD =                                WORLD -- "World"
+L.HALLOWSEND_NOTRICK =                   "[Тыквовин] Без уловок"
+L.HALLOWSEND_NOTRICK_DESC =              "Сядьте, прежде чем выполнять задание «Кулек конфет», чтобы не дать себя обмануть и успокоить."
+-- L.QUEST_SPARKLES =                       "Quest Sparkles"
+-- L.QUEST_SPARKLES_DESC1 =                 "Show sparkles on quest objects and quest givers. (These settings cannot be separated.)"
+-- L.QUEST_SPARKLES_DESC2 =                 "Disabling this feature requires a client restart."
+
 L.SOUND =                                SOUND -- "Sound"
 L.PLAY_QUEUE_SOUND =                     "Воспроизвести звук очереди"
 L.PLAY_QUEUE_SOUND_DESC =                "Воспроизводить звук готовности очереди на главном канале, когда срабатывает любая очередь, включая поля боя и битвы питомцев."
@@ -80,10 +87,6 @@ L.AH_PRICE_TOOLTIP =                     "Подсказка с ценой ау�
 L.AH_PRICE_TOOLTIP_DESC1 =               "Показывать самую свежую информацию о ценах из Auctionator, Oribos Exchange или TradeSkillMaster."
 L.AH_PRICE_TOOLTIP_DESC2 =               "Также округляет значения и исправляет отображение цен в окне профессий, рецептах и ценах на питомцев."
 
-L.HOLIDAYS =                             CALENDAR_FILTER_HOLIDAYS -- "Holidays"
-L.HALLOWSEND_NOTRICK =                   "[Тыквовин] Без уловок"
-L.HALLOWSEND_NOTRICK_DESC =              "Сядьте, прежде чем выполнять задание «Кулек конфет», чтобы не дать себя обмануть и успокоить."
-
 -- UI
 L.GET_IT_NOW =                           "Получить сейчас!"
 L.HOLD_SHIFT_TOOLTIP =                   "Удерживайте Shift, чтобы мгновенно получить предмет, пропуская 5-секундный таймер."
@@ -97,3 +100,4 @@ L.RULESET[4] =                           "Ролевой PvP"
 L.RULESET[5] =                           GUILD_PLAYSTYLE_HARDCORE -- "Hardcore"
 L.ROWS =                                 "Строки:"
 L.COLUMNS =                              "Колонки:"
+-- L.QUEST_SPARKLES_WARNING =               "Tried to apply Quest Sparkles more than 5 times. Another addon may also watching these CVars."
