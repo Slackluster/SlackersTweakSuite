@@ -35,7 +35,7 @@ Features marked with [F] are available on Forever; features marked with [R] are 
   - [R] Play Countdown Sound: Play the countdown sound on the Master channel when any countdown / pull timer is initiated.
 - Addons
   - [R] Disable HandyNotes Alt+RMB: Disable HandyNotes' keybind on the map, re-enabling it for TomTom waypoints instead.
-  - [R] AH Price Tooltip: Show the most recent pricing information from either Auctionator, Oribos Exchange, or TradeSkillMaster
+  - [R] AH Price Tooltip: Show the most recent pricing information from either Auctionator, Oribos Exchange, or TradeSkillMaster.
 
 ![](https://media.forgecdn.net/attachments/2094/477/sts-01-gif.gif)
 
