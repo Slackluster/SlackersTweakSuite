@@ -9,7 +9,8 @@ local appName, app = ...
 ---------------------
 
 app.Event:Register("MERCHANT_SHOW", function()
-	if not TransmogLootHelper_Settings.vendorAll and app.Settings.vendorAll then
+	if TransmogLootHelper_Settings and TransmogLootHelper_Settings.vendorAll then return end
+	if app.Settings.vendorAll then
 		RunNextFrame(function()
 			SetMerchantFilter(1)
 			MerchantFrame_Update()
