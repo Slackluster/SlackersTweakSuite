@@ -21,8 +21,28 @@ end)
 --------------------------
 
 function app:SkipSeenCinematics()
-	local function handleCinematic(key)
-		if not app.Cache.Cinematics[key] then
+	local exceptions = {
+		[241] = { -- Twilight Highlands
+			28244, -- Eye Spy
+			28655, -- Wild, Wild, Wildhammer Wedding
+		},
+	}
+
+	local function isException(zoneID)
+		local quests = exceptions[zoneID]
+		if not quests then return false end
+
+		for _, questID in ipairs(quests) do
+			if C_QuestLog.IsOnQuest(questID) then return true end
+		end
+		return false
+	end
+
+	local function handleCinematic(key, zoneID)
+		if isException(zoneID) then
+			app:Debug("Exception cinematic, not skipping", key)
+			return false
+		elseif not app.Cache.Cinematics[key] then
 			app.Cache.Cinematics[key] = true
 			app:Debug("Registering cinematic", key)
 			return false
@@ -51,7 +71,7 @@ function app:SkipSeenCinematics()
 
 		local key = "cinematic:" .. map .. ":" .. zone .. ":" .. subzone
 
-		if handleCinematic(key) then
+		if handleCinematic(key, map) then
 			RunNextFrame(function()
 				if CinematicFrame:IsShown() then
 					CinematicFrame_CancelCinematic()
@@ -67,7 +87,7 @@ function app:SkipSeenCinematics()
 
 		local key = "movie:" .. movieID
 
-		if handleCinematic(key) then
+		if handleCinematic(key, C_Map.GetBestMapForUnit("player")) then
 			RunNextFrame(function()
 				if MovieFrame:IsShown() and MovieFrame.movieID == movieID then
 					MovieFrame:FinishMovie()
